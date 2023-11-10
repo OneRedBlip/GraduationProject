@@ -1,18 +1,9 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:trash2treasure/login_page.dart';
 import 'package:trash2treasure/requests_page.dart';
 import 'package:trash2treasure/rewards_page.dart';
 import 'package:trash2treasure/signup_page.dart';
 import 'package:trash2treasure/user_profile_page.dart';
-=======
-import 'home_page.dart';
-import 'login_page.dart';
-import 'signup_page.dart';
-import 'requests_page.dart';
-import 'user_profile_page.dart';
-import 'rewards_page.dart';
->>>>>>> 840aa3364c9d2f7fae1b5e68068648322c4bff0e
 
 void main() {
   runApp(TrashToTreasureApp());
