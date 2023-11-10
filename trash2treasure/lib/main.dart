@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/home_page.dart';
-import 'package:my_app/login_page.dart';
-import 'package:my_app/signup_page.dart';
-import 'package:my_app/requests_page.dart';
-import 'package:my_app/user_profile_page.dart';
-import 'package:my_app/rewards_page.dart';
+import 'home_page.dart';
+import 'login_page.dart';
+import 'signup_page.dart';
+import 'requests_page.dart';
+import 'user_profile_page.dart';
+import 'rewards_page.dart';
 
 void main() {
   runApp(TrashToTreasureApp());
