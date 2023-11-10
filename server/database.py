@@ -58,6 +58,3 @@ class Database:
                 # TODO throw a better exception
 
         self.cur.execute(query, data)
-
-
-test1 = Database("AAAAAA.db")
