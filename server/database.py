@@ -58,3 +58,4 @@ class Database:
                 # TODO throw a better exception
 
         self.cur.execute(query, data)
+        self.con.commit()
