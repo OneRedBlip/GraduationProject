@@ -6,6 +6,8 @@ class Database:
         self.con: sqlite3.Connection = sqlite3.connect(db_path)
         self.cur: sqlite3.Cursor = self.con.cursor()
 
+        # TODO: implement ON UPDATE statements for applicable tables
+
         # users table
         self.cur.execute('''
             CREATE TABLE IF NOT EXISTS users (
@@ -98,5 +100,3 @@ class Database:
         self.con.commit()
     
     # TODO: figure out what data we need to fetch
-
-test = Database("AAAAA.db")
