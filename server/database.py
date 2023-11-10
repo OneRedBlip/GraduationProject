@@ -6,6 +6,7 @@ class Database:
         self.con: sqlite3.Connection = sqlite3.connect(db_path)
         self.cur: sqlite3.Cursor = self.con.cursor()
 
+        # TODO: add ON UPDATE logic to applicable tables
         self.create_table("users", [("user_id", "INTEGER PRIMARY KEY AUTOINCREMENT"),
                                     ("user_name", "VARCHAR NOT NULL"), ("email", "VARCHAR"),
                                     ("password", "VARCHAR NOT NULL"), ("points", "INT NOT NULL DEFAULT 0"),
@@ -59,3 +60,5 @@ class Database:
 
         self.cur.execute(query, data)
         self.con.commit()
+    
+    # TODO: figure out what data we need to fetch
