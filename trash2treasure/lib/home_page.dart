@@ -1,14 +1,12 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:my_app/login_page.dart';
+import 'package:trash2treasure/login_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Trash to Treasure'),
+        title: const Text('Trash to Treasure'),
       ),
       body: Center(
         child: Column(
@@ -19,7 +17,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/login');
               },
-              child: Text('Login'),
+              child: const Text('Login'),
             ),
           ],
         ),

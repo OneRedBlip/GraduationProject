@@ -1,8 +1,12 @@
-// login_page.dart
+
+
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,18 +16,21 @@ class LoginPage extends StatelessWidget {
       body: Column(
         children: [
           TextField(
+            controller:emailController ,
+
             decoration: InputDecoration(
               labelText: 'Username',
             ),
           ),
           TextField(
+            controller: passwordController ,
             decoration: InputDecoration(
               labelText: 'Password',
             ),
           ),
           ElevatedButton(
             onPressed: () {
-              // Login logic goes here
+             log(emailController.text);
             },
             child: Text('Login'),
           ),

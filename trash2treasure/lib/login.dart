@@ -58,10 +58,10 @@ class _LoginPageState extends State<LoginPage> {
                                 sendToServer(_username.text, _password.text),
                                 if (_password.text == "123")
                                   {
-                                    Navigator.push(
+                                    /*Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (_) => FancyHomeScreen()))
+                                            builder: (_) => FancyHomeScreen()))*/
                                   }
                               },
                           child: Text("Login"))
