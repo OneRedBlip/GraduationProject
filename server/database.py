@@ -14,6 +14,7 @@ class Database:
                 user_id INTEGER PRIMARY KEY AUTOINCREMENT,
                 user_name VARCHAR NOT NULL,
                 email VARCHAR,
+                phone_num INT NOT NULL,
                 password VARCHAR NOT NULL,
                 points INT NOT NULL DEFAULT 0,
                 user_location VARCHAR NOT NULL
@@ -99,10 +100,11 @@ class Database:
         self.cur.execute(query, data)
         self.con.commit()
 
-    def getUserInfo(self, user_id: int, ) -> tuple[str, str, str, int, int, str]:
-        res = self.cur.execute("SELECT user_id, user_name, email, phone_num, points FROM users WHERE user_id = ?", user_id).fetchone()
+    def getUserInfo(self, user_id: int, ) -> tuple[str, str, str, int, int, str, str]:
+        res = self.cur.execute(
+            "SELECT user_id, user_name, email, phone_num, points, user_location FROM users WHERE user_id = ?", (user_id,)).fetchone()
         if res is None:
             raise ValueError  # Is this the correct exception to raise??
-        return res[0]
+        return res
 
     # TODO: figure out what data we need to fetch
