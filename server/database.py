@@ -98,5 +98,11 @@ class Database:
 
         self.cur.execute(query, data)
         self.con.commit()
-    
+
+    def getUserInfo(self, user_id: int, ) -> tuple[str, str, str, int, int, str]:
+        res = self.cur.execute("SELECT user_id, user_name, email, phone_num, points FROM users WHERE user_id = ?", user_id).fetchone()
+        if res is None:
+            raise ValueError  # Is this the correct exception to raise??
+        return res[0]
+
     # TODO: figure out what data we need to fetch
