@@ -100,11 +100,19 @@ class Database:
         self.cur.execute(query, data)
         self.con.commit()
 
-    def getUserInfo(self, user_id: int, ) -> tuple[str, str, str, int, int, str, str]:
+    def getUserInfo(self, user_id: int, ) -> tuple[str, str, int, int, str]:
         res = self.cur.execute(
-            "SELECT user_id, user_name, email, phone_num, points, user_location FROM users WHERE user_id = ?", (user_id,)).fetchone()
+            "SELECT user_name, email, phone_num, points, user_location FROM users WHERE user_id = ?", (user_id,)).fetchone()
         if res is None:
             raise ValueError  # Is this the correct exception to raise??
         return res
+
+    def getCenterInfo(self, center_id: int, ) -> tuple[str, str, str, dict, str]:
+        res = self.cur.execute(
+            "SELECT  center_name, material_type, location, hours, additional_info FROM centers WHERE center_id = ?", (center_id,)).fetchone()
+        if res is None:
+            raise ValueError  # Is this the correct exception to raise??
+        return res
+
 
     # TODO: figure out what data we need to fetch
