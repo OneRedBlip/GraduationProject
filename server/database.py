@@ -103,23 +103,17 @@ class Database:
     def getUserInfo(self, user_id: int, ) -> tuple[str, str, int, int, str]:
         res = self.cur.execute(
             "SELECT user_name, email, phone_num, points, user_location FROM users WHERE user_id = ?", (user_id,)).fetchone()
-        if res is None:
-            raise ValueError  # Is this the correct exception to raise??
         return res
 
     def getCenterInfo(self, center_id: int, ) -> tuple[str, str, str, dict, str]:
         res = self.cur.execute(
             "SELECT  center_name, material_type, location, hours, additional_info FROM centers WHERE center_id = ?", (center_id,)).fetchone()
-        if res is None:
-            raise ValueError  # should we even raise an exception?
         return res
 
     def getCentersInLocation(self, location: str, ) -> tuple[int, str, str, str, dict, str]:  # Return types incorrect 🤷.
         res = self.cur.execute(
             "SELECT center_id, center_name, material_type, location, hours, additional_info FROM centers WHERE location = ?", (location,)).fetchall()
         # using fetchall is kinda wrong. but should be fine for this prototype.
-        if res is None:
-            raise ValueError  # Hopefully this is never raised.
         return res
 
     # TODO: figure out what data we need to fetch
