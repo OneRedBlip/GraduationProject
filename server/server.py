@@ -1,4 +1,5 @@
 from flask import Flask, request
+import database
 
 app = Flask(__name__)
 
@@ -9,7 +10,6 @@ def handleRequest():
         data = request.get_json()
         print("Received data:\n", data)
         # TODO Actually authenticate
-        print(authUser(data))
         # TODO Actually Return user info
         return ("Data Received Successfully", 200)
     except Exception as e:
@@ -18,13 +18,5 @@ def handleRequest():
         return ("An error has occured", 500)
 
 
-def authUser(credentials: dict):
-    try:
-        return (usersAndPasswords[credentials["username"]] == credentials["password"])
-    except Exception:
-        return False
-
-
-# TODO use a real DB
-usersAndPasswords: dict = {"fakeUser": "123"}
+db = database.Database("database.db")
 app.run(host="0.0.0.0", port=8000)
