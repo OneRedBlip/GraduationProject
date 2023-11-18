@@ -12,7 +12,7 @@ class Database:
         self.cur.execute('''
             CREATE TABLE IF NOT EXISTS users (
                 user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_name VARCHAR NOT NULL,
+                user_name VARCHAR UNIQUE NOT NULL,
                 email VARCHAR,
                 phone_num INT NOT NULL,
                 password VARCHAR NOT NULL,
