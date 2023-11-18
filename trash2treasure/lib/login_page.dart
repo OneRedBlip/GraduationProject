@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 class LoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,21 +17,21 @@ class LoginPage extends StatelessWidget {
       body: Column(
         children: [
           TextField(
-            controller:emailController ,
+            controller: emailController,
 
             decoration: InputDecoration(
               labelText: 'Username',
             ),
           ),
           TextField(
-            controller: passwordController ,
+            controller: passwordController,
             decoration: InputDecoration(
               labelText: 'Password',
             ),
           ),
           ElevatedButton(
             onPressed: () {
-             log(emailController.text);
+              log(emailController.text);
             },
             child: Text('Login'),
           ),
@@ -46,8 +47,43 @@ class LoginPage extends StatelessWidget {
             },
             child: Text('Help/Support'),
           ),
+          ElevatedButton(
+            onPressed: () {
+              // Check login credentials here
+              String username = emailController.text;
+              String password = passwordController.text;
+
+              if (username == 'your_username' && password == 'your_password') {
+                // Navigate to MainPage if login is successful
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainPage()),
+                );
+              } else {
+                // Handle invalid login credentials
+                showDialog(
+                  context: context,
+                  builder: (context) =>
+                      AlertDialog(
+                        title: Text('Invalid Login'),
+                        content: Text('Please enter valid credentials.'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text('OK'),
+                          ),
+                        ],
+                      ),
+                );
+              }
+            },
+            child: Text('Login'),
+          ),
         ],
       ),
     );
   }
 }
+
