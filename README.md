@@ -7,7 +7,7 @@
 - [ ] Server: implement `ON UPDATE` for applicable tables in DB
 - [ ] Server: send and recive data from app
 - [ ] Server: Authenticate user
-- [ ] Server: Register user
+- [x] Server: Register user
 - [ ] Server: hash and salt passwords in DB
 - [ ] Server: seed DB with data for demo
 - [ ] APP: allow login without connecting to server (for easier devolepment)
