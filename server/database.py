@@ -105,6 +105,11 @@ class Database:
             "SELECT user_name, email, phone_num, points, user_location FROM users WHERE user_id = ?", (user_id,)).fetchone()
         return res
 
+    def getUserPass(self, user_name: str, ) -> tuple[int, str]:
+        res = self.cur.execute(
+            "SELECT user_id, password FROM users WHERE user_name = ?", (user_name,)).fetchone()
+        return res
+
     def getCenterInfo(self, center_id: int, ) -> tuple[str, str, str, dict, str]:
         res = self.cur.execute(
             "SELECT  center_name, material_type, location, hours, additional_info FROM centers WHERE center_id = ?", (center_id,)).fetchone()
