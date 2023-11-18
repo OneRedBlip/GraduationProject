@@ -3,7 +3,7 @@ import sqlite3
 
 class Database:
     def __init__(self, db_path: str) -> None:
-        self.con: sqlite3.Connection = sqlite3.connect(db_path)
+        self.con: sqlite3.Connection = sqlite3.connect(db_path, check_same_thread=False)
         self.cur: sqlite3.Cursor = self.con.cursor()
 
         # TODO: implement ON UPDATE statements for applicable tables
@@ -82,7 +82,7 @@ class Database:
     def insert(self, table_name: str, data: dict) -> None:
         match table_name:
             case "users":
-                query = "INSERT INTO users VALUES(:user_id, :user_name, :email, :phone_num, :password, :points, :user_location)"
+                query = "INSERT INTO users ('user_name', email, phone_num, password, user_location) VALUES(:user_name, :email, :phone_num, :password, :user_location)"
             case "rewards":
                 query = "INSERT INTO rewards VALUES(:reward_id, :reward_name, points_required, :reward_desc)"
             case "posts":

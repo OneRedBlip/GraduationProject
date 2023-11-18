@@ -18,5 +18,17 @@ def handleRequest():
         return ("An error has occured", 500)
 
 
+@app.route("/signup", methods=['POST'])
+def signup():
+    try:
+        data = request.get_json()
+        db.insert("users", data)
+        return ("User created successfully", 201)
+    except Exception as e:
+        print("Exception: ", e)
+        # TODO Return a better status code
+        return ("An error has occured", 500)
+
+
 db = database.Database("database.db")
 app.run(host="0.0.0.0", port=8000)
