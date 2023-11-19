@@ -32,24 +32,6 @@ class LoginPage extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              log(emailController.text);
-            },
-            child: Text('Login'),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/signup');
-            },
-            child: Text('Sign Up'),
-          ),
-          TextButton(
-            onPressed: () {
-              // Help/Support logic goes here
-            },
-            child: Text('Help/Support'),
-          ),
-          ElevatedButton(
-            onPressed: () {
               // Check login credentials here
               String username = emailController.text;
               String password = passwordController.text;
@@ -81,6 +63,18 @@ class LoginPage extends StatelessWidget {
               }
             },
             child: Text('Login'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/signup');
+            },
+            child: Text('Sign Up'),
+          ),
+          TextButton(
+            onPressed: () {
+              // Help/Support logic goes here
+            },
+            child: Text('Help/Support'),
           ),
         ],
       ),
