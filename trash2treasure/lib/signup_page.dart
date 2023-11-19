@@ -41,8 +41,14 @@ class SignupPage extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            onPressed: () {
-              // Sign up logic goes here
+            onPressed: () async {
+              String username = usernameController.text;
+              String email = emailController.text;
+              String password = passwordController.text;
+              String passwordRepeat = passwordRepeatController.text;
+
+              http.Response response =
+                  await postSignup(username, email, password, passwordRepeat);
             },
             child: Text('Sign Up'),
           ),
@@ -52,10 +58,13 @@ class SignupPage extends StatelessWidget {
   }
 }
 
-Future<http.Response> postSignup(String userName, String passWord, string ) async {
+Future<http.Response> postSignup(
+    String userName, String email, String password, String passwordRepeat ) async {
   Map<String, dynamic> requestBody = {
     'user_name': userName,
-    'password': passWord
+    'email': email,
+    'passwordRepeat': passwordRepeat,
+    'password': password
   };
 
   try {
