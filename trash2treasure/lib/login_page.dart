@@ -31,6 +31,7 @@ class LoginPage extends StatelessWidget {
             ),
           ),
           ElevatedButton(
+            child: Text('Login'),
             onPressed: () {
               // Check login credentials here
               String username = emailController.text;
@@ -62,7 +63,6 @@ class LoginPage extends StatelessWidget {
                 );
               }
             },
-            child: Text('Login'),
           ),
           TextButton(
             onPressed: () {
