@@ -55,8 +55,8 @@ class SignupPage extends StatelessWidget {
               String password = passwordController.text;
               String passwordRepeat = passwordRepeatController.text;
 
-              http.Response response =
-                  await postSignup(username, email, password, passwordRepeat);
+              http.Response response = await postSignup(
+                  username, email, phoneNumber, password, passwordRepeat);
             },
             child: Text('Sign Up'),
           ),
@@ -66,11 +66,12 @@ class SignupPage extends StatelessWidget {
   }
 }
 
-Future<http.Response> postSignup(String userName, String email, String password,
-    String passwordRepeat) async {
+Future<http.Response> postSignup(String userName, String email,
+    String phoneNumber, String password, String passwordRepeat) async {
   Map<String, dynamic> requestBody = {
     'user_name': userName,
     'email': email,
+    'phone_num': phoneNumber,
     'passwordRepeat': passwordRepeat,
     'password': password
   };
