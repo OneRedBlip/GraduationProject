@@ -1,5 +1,6 @@
 
 
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -90,3 +91,20 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
+Future<http.Response> postCreds(String userName, String passWord) async {
+  Map<String, dynamic> requestBody = {'username': userName, 'password': passWord};
+
+  final response = await http.post(
+    Uri(
+      host: "127.1.1.1",
+      port: 8000,
+      scheme: "http",
+    ),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(requestBody),
+  );
+
+  return response;
+}
