@@ -9,6 +9,7 @@ class SignupPage extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController passwordRepeatController =
       TextEditingController();
+  final TextEditingController cityController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +37,12 @@ class SignupPage extends StatelessWidget {
             ),
           ),
           TextField(
+            controller: cityController,
+            decoration: InputDecoration(
+              labelText: 'city',
+            ),
+          ),
+          TextField(
             controller: passwordController,
             decoration: InputDecoration(
               labelText: 'Password',
@@ -52,11 +59,12 @@ class SignupPage extends StatelessWidget {
               String username = usernameController.text;
               String email = emailController.text;
               String phoneNumber = phoneNumberController.text;
+              String city = cityController.text;
               String password = passwordController.text;
               String passwordRepeat = passwordRepeatController.text;
 
               http.Response response = await postSignup(
-                  username, email, phoneNumber, password, passwordRepeat);
+                  username, email, phoneNumber, city, password, passwordRepeat);
             },
             child: Text('Sign Up'),
           ),
@@ -67,11 +75,12 @@ class SignupPage extends StatelessWidget {
 }
 
 Future<http.Response> postSignup(String userName, String email,
-    String phoneNumber, String password, String passwordRepeat) async {
+    String phoneNumber, String city, String password, String passwordRepeat) async {
   Map<String, dynamic> requestBody = {
     'user_name': userName,
     'email': email,
     'phone_num': phoneNumber,
+    'user_location': city,
     'passwordRepeat': passwordRepeat,
     'password': password
   };
