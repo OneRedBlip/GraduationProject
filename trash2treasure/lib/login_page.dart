@@ -37,7 +37,8 @@ class LoginPage extends StatelessWidget {
               String username = emailController.text;
               String password = passwordController.text;
 
-              if (username == 'your_username' && password == 'your_password') {
+              // TODO: Actually authenticate with server
+              if (username == 'testuser' && password == '123') {
                 // Navigate to MainPage if login is successful
                 Navigator.pushReplacement(
                   context,
