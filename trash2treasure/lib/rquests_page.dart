@@ -1,8 +1,26 @@
 import 'package:flutter/material.dart';
 
+
 void main() {
   runApp(TrashToTreasureApp());
 }
+
+
+class MainPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Implement the UI for the MainPage here
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Requests page'),
+      ),
+      body: Center(
+        child: Text('Welcome to the Requests page!'),
+      ),
+    );
+  }
+}
+
 
 class TrashToTreasureApp extends StatelessWidget {
   @override
@@ -23,7 +41,7 @@ class TrashToTreasureApp extends StatelessWidget {
   }
 }
 
-class MainPage extends StatelessWidget {
+class RequestsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
