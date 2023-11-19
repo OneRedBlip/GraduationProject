@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
               print(response.body);
 
               // TODO: store the response data somewhere
-              if (response.statusCode == 200 || ( username == 'testuser' && password == '123')) {
+              if (( username == 'testuser' && password == '123') || response.statusCode == 200 ) {
                 // Navigate to MainPage if login is successful
                 Navigator.pushReplacement(
                   context,
@@ -96,18 +96,24 @@ class _LoginPageState extends State<LoginPage> {
 Future<http.Response> postCreds(String userName, String passWord) async {
   Map<String, dynamic> requestBody = {'user_name': userName, 'password': passWord};
 
-  final response = await http.post(
-    Uri(
-      host: "127.1.1.1",
-      port: 8000,
-      scheme: "http",
-      path: "/login"
-    ),
-    headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-    },
-    body: jsonEncode(requestBody),
-  );
+  try {
+    final response = await http.post(
+      Uri(
+        host: "127.1.1.1",
+        port: 8000,
+        scheme: "http",
+        path: "/login"
+      ),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(requestBody),
+    );
 
-  return response;
+    return response;
+  }
+  catch (error) {
+    //TODO Return something better
+    return http.Response('An error occured while attempting to connect to server', 500);
+  }
 }
