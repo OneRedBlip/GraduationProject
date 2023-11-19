@@ -103,6 +103,8 @@ class Database:
     def getUserInfo(self, user_id: int, ) -> dict[str, str]:  # Return types incorrect 🤷.
         res = self.cur.execute(
             "SELECT user_name, email, phone_num, points, user_location FROM users WHERE user_id = ?", (user_id,)).fetchone()
+        if res is None:
+            return None
         return {"user_name": res[0], "email": res[1], "phone_num": res[2], "points": res[3], "user_location": res[4]}
 
     def getUserPass(self, user_name: str, ) -> tuple[int, str]:
