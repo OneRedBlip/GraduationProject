@@ -40,13 +40,15 @@ class _LoginPageState extends State<LoginPage> {
           ),
           ElevatedButton(
             child: Text('Login'),
-            onPressed: () {
+            onPressed: () async {
               // Check login credentials here
               String username = emailController.text;
               String password = passwordController.text;
+              http.Response response = await postCreds(username, password);
+              print(response.body);
 
-              // TODO: Actually authenticate with server
-              if (username == 'testuser' && password == '123') {
+              // TODO: store the response data somewhere
+              if (response.statusCode == 200 || ( username == 'testuser' && password == '123')) {
                 // Navigate to MainPage if login is successful
                 Navigator.pushReplacement(
                   context,
@@ -92,13 +94,14 @@ class _LoginPageState extends State<LoginPage> {
 }
 
 Future<http.Response> postCreds(String userName, String passWord) async {
-  Map<String, dynamic> requestBody = {'username': userName, 'password': passWord};
+  Map<String, dynamic> requestBody = {'user_name': userName, 'password': passWord};
 
   final response = await http.post(
     Uri(
       host: "127.1.1.1",
       port: 8000,
       scheme: "http",
+      path: "/login"
     ),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
