@@ -2,6 +2,7 @@ from flask import Flask, request, session
 import database
 
 app = Flask(__name__)
+app.secret_key = b"RandomByetesForSecurity"
 
 
 @app.route("/", methods=['POST'])
