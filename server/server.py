@@ -5,20 +5,6 @@ app = Flask(__name__)
 app.secret_key = b"RandomByetesForSecurity"
 
 
-@app.route("/", methods=['POST'])
-def handleRequest():
-    try:
-        data = request.get_json()
-        print("Received data:\n", data)
-        # TODO Actually authenticate
-        # TODO Actually Return user info
-        return ("Data Received Successfully", 200)
-    except Exception as e:
-        print("Exception: ", e)
-        # TODO Return a better status code
-        return ("An error has occured", 500)
-
-
 @app.route("/signup", methods=['POST'])
 def signup():
     try:
