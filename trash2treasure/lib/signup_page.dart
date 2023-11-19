@@ -5,6 +5,7 @@ import 'dart:convert';
 class SignupPage extends StatelessWidget {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController passwordRepeatController =
       TextEditingController();
@@ -29,6 +30,12 @@ class SignupPage extends StatelessWidget {
             ),
           ),
           TextField(
+            controller: phoneNumberController,
+            decoration: InputDecoration(
+              labelText: 'phone number',
+            ),
+          ),
+          TextField(
             controller: passwordController,
             decoration: InputDecoration(
               labelText: 'Password',
@@ -44,6 +51,7 @@ class SignupPage extends StatelessWidget {
             onPressed: () async {
               String username = usernameController.text;
               String email = emailController.text;
+              String phoneNumber = phoneNumberController.text;
               String password = passwordController.text;
               String passwordRepeat = passwordRepeatController.text;
 
@@ -58,8 +66,8 @@ class SignupPage extends StatelessWidget {
   }
 }
 
-Future<http.Response> postSignup(
-    String userName, String email, String password, String passwordRepeat ) async {
+Future<http.Response> postSignup(String userName, String email, String password,
+    String passwordRepeat) async {
   Map<String, dynamic> requestBody = {
     'user_name': userName,
     'email': email,
