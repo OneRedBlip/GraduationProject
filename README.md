@@ -6,7 +6,7 @@
 - [ ] Server: Fetch data from DB
 - [ ] Server: implement `ON UPDATE` for applicable tables in DB
 - [ ] Server: send and recive data from app
-- [ ] Server: Authenticate user
+- [x] Server: Authenticate user
 - [x] Server: Register user
 - [ ] Server: hash and salt passwords in DB
 - [ ] Server: seed DB with data for demo
