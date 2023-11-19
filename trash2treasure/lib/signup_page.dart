@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class SignupPage extends StatelessWidget {
@@ -42,3 +40,4 @@ class SignupPage extends StatelessWidget {
     );
   }
 }
+
