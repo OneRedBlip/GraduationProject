@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:trash2treasure/guidelines_page.dart';
+import 'package:trash2treasure/info_page.dart';
+import 'package:trash2treasure/profile_page.dart';
+import 'package:trash2treasure/reward_page.dart';
 
 
 void main() {
@@ -148,87 +152,6 @@ class RequestCard extends StatelessWidget {
         title: Text(title),
         subtitle: Text(description),
         onTap: onPressed,
-      ),
-    );
-  }
-}
-
-class InfoPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Info'),
-      ),
-      body: Center(
-        child: Text('Information page content'),
-      ),
-    );
-  }
-}
-
-class RewardPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Rewards'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Congratulations!',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 16),
-            Text(
-              'You have earned 100 points!',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                // Redeem rewards logic goes here
-              },
-              child: Text('Redeem Now'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class ProfilePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Profile'),
-      ),
-      body: Center(
-        child: Text('Profile page content'),
-      ),
-    );
-  }
-}
-
-class GuidelinesPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Guidelines'),
-      ),
-      body: Center(
-        child: Text('Guidelines page content'),
       ),
     );
   }
