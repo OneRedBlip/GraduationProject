@@ -14,6 +14,6 @@
 - [ ] APP: finalize design of UI 
 - [ ] APP: implement navigation from and to all pages
 - [ ] APP: send and recive data from server
-- [ ] APP: implement sign up logic
-- [ ] APP: implement log in logic
+- [x] APP: implement sign up logic
+- [x] APP: implement log in logic
 - [ ] APP: implement haraj logic
