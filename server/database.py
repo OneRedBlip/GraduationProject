@@ -125,7 +125,13 @@ class Database:
 
     def getPostsInLocation(self, location: str, ) -> tuple[int, str, str, str, dict, str]:  # Return types incorrect 🤷.
         res = self.cur.execute(
-            "SELECT post_id, user_id, post_date, material_type, location, additional_info, status)FROM posts WHERE location = ?", (location,)).fetchall()
+            "SELECT post_id, user_id, post_date, material_type, location, additional_info, status) FROM posts WHERE location = ?", (location,)).fetchall()
+        # using fetchall is kinda wrong. but should be fine for this prototype.
+        return res
+
+    def getPostsByMaterial(self, material: str, ) -> tuple[int, int, int, str, str, str, str]:  # Return types incorrect 🤷.
+        res = self.cur.execute(
+            "SELECT post_id, user_id, post_date, material_type, location, additional_info, status) FROM posts WHERE material = ?", (material,)).fetchall()
         # using fetchall is kinda wrong. but should be fine for this prototype.
         return res
 
