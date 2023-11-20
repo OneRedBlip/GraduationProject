@@ -123,22 +123,37 @@ class Database:
         # using fetchall is kinda wrong. but should be fine for this prototype.
         return res
 
-    def getPostsInLocation(self, location: str, ) -> tuple[tuple, ...]:
+    def getPostsInLocation(self, location: str, ) -> dict[dict, ...]:
         res = self.cur.execute(
             "SELECT post_id, user_id, post_date, material_type, location, additional_info, status FROM posts WHERE location = ?", (location,)).fetchall()
         # TODO: sort query
-        return res
+        return self.postsToDict(res)
 
-    def getPostsByMaterial(self, material: str, ) -> tuple[tuple, ...]:
+    def getPostsByMaterial(self, material: str, ) -> dict[dict, ...]:
         res = self.cur.execute(
-            "SELECT post_id, user_id, post_date, material_type, location, additional_info, status FROM posts WHERE material = ?", (material,)).fetchall()
+            "SELECT post_id, user_id, post_date, material_type, location, additional_info, status FROM posts WHERE material_type = ?", (material,)).fetchall()
         # TODO: sort query
-        return res
+        return self.postsToDict(res)
 
-    def getPostsByMaterialAndLocation(self, material: str, location: str) -> tuple[tuple, ...]:
+    def getPostsByMaterialAndLocation(self, material: str, location: str) -> dict[dict, ...]:
         res = self.cur.execute(
-            "SELECT post_id, user_id, post_date, material_type, location, additional_info, status FROM posts WHERE material = ? AND location = ?", (material, location)).fetchall()
+            "SELECT post_id, user_id, post_date, material_type, location, additional_info, status FROM posts WHERE material_type = ? AND location = ?", (material, location)).fetchall()
         # TODO: sort query
-        return res
+        return self.postsToDict(res)
 
+    def postsToDict(self, input: tuple[tuple, ...]):
+        posts_dict = {}
+        for row in input:
+            post_id, user_id, post_date, material_type, location, additional_info, status = row
+            post_dict = {
+                "user_id": user_id,
+                "post_date": post_date,
+                "material_type": material_type,
+                "location": location,
+                "additional_info": additional_info,
+                "status": status
+            }
+            # Add the created dictionary to the main dictionary using post_id as the key
+            posts_dict[post_id] = post_dict
+        return posts_dict
     # TODO: figure out what data we need to fetch
