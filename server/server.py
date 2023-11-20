@@ -33,5 +33,18 @@ def login():
         return ("An error has occured", 500)
 
 
+@app.route("/posts", methods=['POST', 'GET'])
+def getPosts():
+    try:
+        data = request.get_json()
+        if data["searchBy"] == "location":
+            return db.getPostsInLocation(data["location"])
+        # TODO: implement other search criteria
+    except Exception as e:
+        print("Exception: ", e)
+        # TODO Return a better status code
+        return ("An error has occured", 500)
+
+
 db = database.Database("database.db")
 app.run(host="0.0.0.0", port=8000)
