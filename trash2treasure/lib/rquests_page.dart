@@ -5,11 +5,6 @@ import 'package:trash2treasure/profile_page.dart';
 import 'package:trash2treasure/reward_page.dart';
 
 
-void main() {
-  runApp(TrashToTreasureApp());
-}
-
-
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
