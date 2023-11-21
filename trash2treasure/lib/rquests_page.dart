@@ -73,7 +73,6 @@ class _RequestsPageState extends State<RequestsPage> {
 
         List<RequestCard> tmpCards = [];
         data.forEach((key, value) {
-          print("Key: $key, Value:$value");
           tmpCards.add(
             RequestCard(
               title: value['location'],
