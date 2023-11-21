@@ -3,6 +3,8 @@ import 'package:trash2treasure/guidelines_page.dart';
 import 'package:trash2treasure/info_page.dart';
 import 'package:trash2treasure/profile_page.dart';
 import 'package:trash2treasure/reward_page.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class MainPage extends StatelessWidget {
   @override
@@ -62,7 +64,7 @@ class RequestsPage extends StatelessWidget {
             title: 'Plastic Bottles',
             description: 'Recyclable plastic bottles',
             onPressed: () {
-              Navigator.pushNamed(context, '/request1');
+            postPosts("jubail", "location");
             },
           ),
           RequestCard(
@@ -229,5 +231,30 @@ class RequestDetailsPage extends StatelessWidget {
         child: Text('Request $requestId Details'),
       ),
     );
+  }
+}
+
+Future<http.Response> postPosts(String location, String searchBy) async {
+  Map<String, dynamic> requestBody = {
+    'location': location,
+    'searchBy': searchBy
+  };
+
+  try {
+    final response = await http.post(
+      Uri(host: "127.1.1.1", port: 8000, scheme: "http", path: "/posts"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(requestBody),
+    );
+    print(response.body);
+    print(response.headers);
+
+    return response;
+  } catch (error) {
+    //TODO Return something better
+    return http.Response(
+        'An error occured while attempting to connect to server', 500);
   }
 }
