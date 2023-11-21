@@ -6,6 +6,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'AfterLogin.dart';
 import 'rquests_page.dart';
 class LoginPage extends StatefulWidget {
   @override
@@ -52,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                 // Navigate to MainPage if login is successful
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => RequestsPage()),
+                  MaterialPageRoute(builder: (context) => AfterLogin()),
                 );
               } else {
                 // Handle invalid login credentials
