@@ -50,7 +50,12 @@ class TrashToTreasureApp extends StatelessWidget {
   }
 }
 
-class RequestsPage extends StatelessWidget {
+class RequestsPage extends StatefulWidget {
+  @override
+  State<RequestsPage> createState() => _RequestsPageState();
+}
+
+class _RequestsPageState extends State<RequestsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
