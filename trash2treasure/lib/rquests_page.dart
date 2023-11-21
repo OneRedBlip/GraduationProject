@@ -56,6 +56,45 @@ class RequestsPage extends StatefulWidget {
 }
 
 class _RequestsPageState extends State<RequestsPage> {
+  List<RequestCard> cardsList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    createRequestCards();
+  }
+
+  Future<void> createRequestCards() async {
+    try {
+      final response = await postPosts("jubail", "location");
+
+      if (response.statusCode == 200) {
+        Map<String, dynamic> data = jsonDecode(response.body);
+
+        List<RequestCard> tmpCards = [];
+        data.forEach((key, value) {
+          print("Key: $key, Value:$value");
+          tmpCards.add(
+            RequestCard(
+              title: value['location'],
+              description: value['additional_info'],
+              onPressed: () {
+                print("pressed");
+              },
+            ),
+          );
+        });
+        setState(() {
+          cardsList = tmpCards;
+        });
+      } else {
+        print('Error $response');
+      }
+    } catch (error) {
+      print('we got error: $error');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,78 +103,7 @@ class _RequestsPageState extends State<RequestsPage> {
       ),
       body: ListView(
         padding: EdgeInsets.all(16),
-        children: [
-          RequestCard(
-            title: 'Plastic Bottles',
-            description: 'Recyclable plastic bottles',
-            onPressed: () {
-            postPosts("jubail", "location");
-            },
-          ),
-          RequestCard(
-            title: 'Cardboard',
-            description: 'Recyclable cardboard boxes',
-            onPressed: () {
-              Navigator.pushNamed(context, '/request2');
-            },
-          ),
-          RequestCard(
-            title: 'Glass Jars',
-            description: 'Recyclable glass jars',
-            onPressed: () {
-              Navigator.pushNamed(context, '/request3');
-            },
-          ),
-          RequestCard(
-            title: 'Aluminum Cans',
-            description: 'Recyclable aluminum cans',
-            onPressed: () {
-              Navigator.pushNamed(context, '/request4');
-            },
-          ),
-          RequestCard(
-            title: 'Paper',
-            description: 'Recyclable paper',
-            onPressed: () {
-              Navigator.pushNamed(context, '/request5');
-            },
-          ),
-          RequestCard(
-            title: 'Plastic Bags',
-            description: 'Recyclable plastic bags',
-            onPressed: () {
-              Navigator.pushNamed(context, '/request6');
-            },
-          ),
-          RequestCard(
-            title: 'Metal Scraps',
-            description: 'Recyclable metal scraps',
-            onPressed: () {
-              Navigator.pushNamed(context, '/request7');
-            },
-          ),
-          RequestCard(
-            title: 'Electronics',
-            description: 'Recyclable electronics',
-            onPressed: () {
-              Navigator.pushNamed(context, '/request8');
-            },
-          ),
-          RequestCard(
-            title: 'Tires',
-            description: 'Recyclable tires',
-            onPressed: () {
-              Navigator.pushNamed(context, '/request9');
-            },
-          ),
-          RequestCard(
-            title: 'Batteries',
-            description: 'Recyclable batteries',
-            onPressed: () {
-              Navigator.pushNamed(context, '/request10');
-            },
-          ),
-        ],
+        children: cardsList,
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
