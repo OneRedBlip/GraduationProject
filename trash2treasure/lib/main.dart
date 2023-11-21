@@ -11,7 +11,7 @@ import 'package:trash2treasure/guidelines_page.dart';
 import 'package:trash2treasure/info_page.dart';
 import 'package:trash2treasure/profile_page.dart';
 import 'package:trash2treasure/reward_page.dart';
-
+import 'package:trash2treasure/haraj_page.dart';
 
 
 

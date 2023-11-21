@@ -5,6 +5,7 @@ import 'package:trash2treasure/profile_page.dart';
 import 'package:trash2treasure/reward_page.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'haraj_page.dart';
 
 class MainPage extends StatelessWidget {
   @override
@@ -45,6 +46,7 @@ class TrashToTreasureApp extends StatelessWidget {
         '/request8': (context) => RequestDetailsPage(requestId: 8),
         '/request9': (context) => RequestDetailsPage(requestId: 9),
         '/request10': (context) => RequestDetailsPage(requestId: 10),
+        '/haraj': (context) => HarajPage(),
       },
     );
   }
@@ -124,39 +126,42 @@ class _RequestsPageState extends State<RequestsPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Haraj',
           ),
         ],
         type: BottomNavigationBarType.fixed,
-        currentIndex: 4, // Set the initial selected index (Home)
+        currentIndex: 4, // Set the initial selected index (Haraj)
         onTap: (index) {
           switch (index) {
             case 0:
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => InfoPage()),
+                MaterialPageRoute(builder: (_) => InfoPage()),
               );
               break;
             case 1:
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => RewardPage()),
+                MaterialPageRoute(builder: (_) => RewardPage()),
               );
               break;
             case 2:
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
+                MaterialPageRoute(builder: (_) => ProfilePage()),
               );
               break;
             case 3:
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => GuidelinesPage()),
+                MaterialPageRoute(builder: (_) => GuidelinesPage()),
               );
               break;
             case 4:
-// Do nothing as we're already on the home page
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => HarajPage()),
+              );
               break;
           }
         },
