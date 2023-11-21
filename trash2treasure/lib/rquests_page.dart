@@ -225,8 +225,9 @@ Future<http.Response> postPosts(String location, String searchBy) async {
 
     return response;
   } catch (error) {
-    //TODO Return something better
+    // for testing when not connected to server
     return http.Response(
-        'An error occured while attempting to connect to server', 500);
+        "{\"1\":{\"additional_info\":\"I have about 2kg of plastic bottles.\",\"location\":\"jubail\",\"material_type\":\"plastic\",\"post_date\":1700498992,\"status\":\"O\",\"user_id\":2},\"2\":{\"additional_info\":\"3kg of soda bottles. contact me for details\",\"location\":\"jubail\",\"material_type\":\"Metal\",\"post_date\":1600498992,\"status\":\"O\",\"user_id\":3}}\n",
+        200);
   }
 }
