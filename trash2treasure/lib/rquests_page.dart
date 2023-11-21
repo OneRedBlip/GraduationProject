@@ -75,7 +75,7 @@ class _RequestsPageState extends State<RequestsPage> {
         data.forEach((key, value) {
           tmpCards.add(
             RequestCard(
-              title: value['location'],
+              title: value['material_type'],
               description: value['additional_info'],
               onPressed: () {
                 print("pressed");
