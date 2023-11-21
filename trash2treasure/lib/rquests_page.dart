@@ -55,6 +55,7 @@ class TrashToTreasureApp extends StatelessWidget {
 class RequestsPage extends StatefulWidget {
   @override
   State<RequestsPage> createState() => _RequestsPageState();
+
 }
 
 class _RequestsPageState extends State<RequestsPage> {
@@ -107,11 +108,13 @@ class _RequestsPageState extends State<RequestsPage> {
         padding: EdgeInsets.all(16),
         children: cardsList,
       ),
+
+
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.info),
-            label: 'Info',
+            label: 'About Us', // Change the label to 'About Us'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.star),
@@ -126,7 +129,7 @@ class _RequestsPageState extends State<RequestsPage> {
             label: 'Guidelines',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.shopping_cart), // Replace with the desired icon
             label: 'Haraj',
           ),
         ],
@@ -170,6 +173,7 @@ class _RequestsPageState extends State<RequestsPage> {
     );
   }
 }
+
 
 class RequestCard extends StatelessWidget {
   final String title;
