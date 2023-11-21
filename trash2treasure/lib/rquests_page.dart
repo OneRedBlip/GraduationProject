@@ -1,56 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:trash2treasure/guidelines_page.dart';
-import 'package:trash2treasure/info_page.dart';
-import 'package:trash2treasure/profile_page.dart';
-import 'package:trash2treasure/reward_page.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'haraj_page.dart';
 
-class MainPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-// Implement the UI for the MainPage here
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Requests page'),
-      ),
-      body: Center(
-        child: Text('Welcome to the Requests page!'),
-      ),
-    );
-  }
-}
 
-class TrashToTreasureApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Trash to Treasure',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MainPage(),
-      routes: {
-        '/info': (context) => InfoPage(),
-        '/reward': (context) => RewardPage(),
-        '/profile': (context) => ProfilePage(),
-        '/guidelines': (context) => GuidelinesPage(),
-        '/request1': (context) => RequestDetailsPage(requestId: 1),
-        '/request2': (context) => RequestDetailsPage(requestId: 2),
-        '/request3': (context) => RequestDetailsPage(requestId: 3),
-        '/request4': (context) => RequestDetailsPage(requestId: 4),
-        '/request5': (context) => RequestDetailsPage(requestId: 5),
-        '/request6': (context) => RequestDetailsPage(requestId: 6),
-        '/request7': (context) => RequestDetailsPage(requestId: 7),
-        '/request8': (context) => RequestDetailsPage(requestId: 8),
-        '/request9': (context) => RequestDetailsPage(requestId: 9),
-        '/request10': (context) => RequestDetailsPage(requestId: 10),
-        '/haraj': (context) => HarajPage(),
-      },
-    );
-  }
-}
 
 class RequestsPage extends StatefulWidget {
   @override

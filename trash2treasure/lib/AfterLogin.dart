@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:trash2treasure/rquests_page.dart';
 import 'package:trash2treasure/rewards_page.dart';
-import 'package:trash2treasure/signup_page.dart';
-import 'package:trash2treasure/user_profile_page.dart';
-
 import 'package:trash2treasure/guidelines_page.dart';
 import 'package:trash2treasure/info_page.dart';
 import 'package:trash2treasure/profile_page.dart';
-import 'package:trash2treasure/reward_page.dart';
-import 'package:trash2treasure/haraj_page.dart';
 
 class AfterLogin extends StatefulWidget {
   const AfterLogin({super.key});
@@ -22,7 +17,7 @@ class _AfterLoginState extends State<AfterLogin> {
   int currentPage = 4;
   List pages = [
     InfoPage(),
-    RewardPage(),
+    RewardsPage(),
     ProfilePage(),
     GuidelinesPage(),
     RequestsPage()

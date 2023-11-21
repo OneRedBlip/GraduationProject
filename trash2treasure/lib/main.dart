@@ -1,19 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:trash2treasure/login_page.dart';
+import 'package:trash2treasure/profile_page.dart';
 import 'package:trash2treasure/rquests_page.dart';
 import 'package:trash2treasure/rewards_page.dart';
-import 'package:trash2treasure/rquests_page.dart';
 import 'package:trash2treasure/signup_page.dart';
-import 'package:trash2treasure/user_profile_page.dart';
-
-import 'package:trash2treasure/guidelines_page.dart';
-import 'package:trash2treasure/info_page.dart';
-import 'package:trash2treasure/profile_page.dart';
-import 'package:trash2treasure/reward_page.dart';
-import 'package:trash2treasure/haraj_page.dart';
-
-
 
 void main() {
   runApp(TrashToTreasureApp());
@@ -33,9 +24,8 @@ class TrashToTreasureApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignupPage(),
         '/requests': (context) => RequestsPage(),
-        '/profile': (context) => UserProfilePage(),
+        '/profile': (context) => ProfilePage(),
         '/rewards': (context) => RewardsPage(),
-
       },
     );
   }
