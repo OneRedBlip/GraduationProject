@@ -55,7 +55,6 @@ class TrashToTreasureApp extends StatelessWidget {
 class RequestsPage extends StatefulWidget {
   @override
   State<RequestsPage> createState() => _RequestsPageState();
-
 }
 
 class _RequestsPageState extends State<RequestsPage> {
@@ -108,72 +107,9 @@ class _RequestsPageState extends State<RequestsPage> {
         padding: EdgeInsets.all(16),
         children: cardsList,
       ),
-
-
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            label: 'About Us', // Change the label to 'About Us'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.star),
-            label: 'Reward',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.book),
-            label: 'Guidelines',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart), // Replace with the desired icon
-            label: 'Haraj',
-          ),
-        ],
-        type: BottomNavigationBarType.fixed,
-        currentIndex: 4, // Set the initial selected index (Haraj)
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => InfoPage()),
-              );
-              break;
-            case 1:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => RewardPage()),
-              );
-              break;
-            case 2:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => ProfilePage()),
-              );
-              break;
-            case 3:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => GuidelinesPage()),
-              );
-              break;
-            case 4:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => HarajPage()),
-              );
-              break;
-          }
-        },
-      ),
     );
   }
 }
-
 
 class RequestCard extends StatelessWidget {
   final String title;
