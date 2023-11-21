@@ -35,6 +35,7 @@ class TrashToTreasureApp extends StatelessWidget {
         '/requests': (context) => RequestsPage(),
         '/profile': (context) => UserProfilePage(),
         '/rewards': (context) => RewardsPage(),
+
       },
     );
   }
