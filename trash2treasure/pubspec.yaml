@@ -64,6 +64,18 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - image/unnamed.png
+    - image/dammam_map.png
+    - image/riyadh_map.png
+    - image/jeddah_map.png
+    - image/instagram_icon.svg
+
+
+
+
+
+
+
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

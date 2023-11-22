@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class InfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -41,8 +42,116 @@ class InfoPage extends StatelessWidget {
               'Economic benefits: Recycling creates jobs, stimulates economic growth, and promotes a circular economy.',
               style: TextStyle(fontSize: 14),
             ),
+            SizedBox(height: 16),
+            Text(
+              'Recycling Centers:',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _buildRecycleCenterBox(
+                  cityName: 'Dammam',
+                  imagePath: 'assets/dammam_map.png',
+                ),
+                _buildRecycleCenterBox(
+                  cityName: 'Riyadh',
+                  imagePath: 'assets/riyadh_map.png',
+                ),
+                _buildRecycleCenterBox(
+                  cityName: 'Jeddah',
+                  imagePath: 'assets/jeddah_map.png',
+                ),
+              ],
+            ),
+            SizedBox(height: 16),
+            Container(
+              alignment: Alignment.bottomRight,
+              child: Card(
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Contact Us',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.email,
+                            color: Colors.black,
+                          ),
+                          SizedBox(width: 8),
+                          Text('trash2treasure@gmail.com'),
+                        ],
+                      ),
+                      SizedBox(height: 4),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/instagram_icon.svg',
+                            width: 20,
+                            height: 20,
+                            color: Colors.black,
+                          ),
+                          SizedBox(width: 8),
+                          Text('@trash2trasure'),
+                        ],
+                      ),
+                      SizedBox(height: 4),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.language,
+                            color: Colors.black,
+                          ),
+                          SizedBox(width: 8),
+                          Text('www.trash2treasure.com'),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildRecycleCenterBox({String cityName, String imagePath}) {
+    return Container(
+      width: 120,
+      height: 120,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Stack(
+        children: [
+          SvgPicture.asset(
+            imagePath,
+            fit: BoxFit.cover,
+          ),
+          Container(
+            alignment: Alignment.center,
+            child: Text(
+              cityName,
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

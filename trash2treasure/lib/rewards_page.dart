@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class RewardsPage extends StatelessWidget {
@@ -8,33 +7,55 @@ class RewardsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Rewards'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Congratulations!',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 16),
-            Text(
-              'You have earned 100 points!',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                // Redeem rewards logic goes here
-              },
-              child: Text('Redeem Now'),
-            ),
-          ],
+      body: ListView(
+        padding: EdgeInsets.all(16),
+        children: [
+          RewardItem(
+            storeName: 'Tamimi',
+            couponValue: '100 SR',
+          ),
+          RewardItem(
+            storeName: 'Banda',
+            couponValue: '100 SR',
+          ),
+          RewardItem(
+            storeName: 'Lulu Market',
+            couponValue: '100 SR',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class RewardItem extends StatelessWidget {
+  final String storeName;
+  final String couponValue;
+
+  const RewardItem({
+    required this.storeName,
+    required this.couponValue,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(
+        storeName,
+        style: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
         ),
+      ),
+      subtitle: Text(
+        'Coupon Value: $couponValue',
+        style: TextStyle(fontSize: 16),
+      ),
+      trailing: ElevatedButton(
+        onPressed: () {
+          // Collect reward logic goes here
+        },
+        child: Text('Collect'),
       ),
     );
   }
