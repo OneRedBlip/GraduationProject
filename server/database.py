@@ -141,6 +141,24 @@ class Database:
         # TODO: sort query
         return self.postsToDict(res)
 
+    def getRewards(self) -> dict[dict, ...]:
+        res = self.cur.execute("SELECT reward_id, reward_name, points_required, reward_desc FROM rewards")
+        return self.rewardsToDict(res)
+
+    def rewardsToDict(self, input: tuple[tuple, ...]):
+        rewards_dict = {}
+        for row in input:
+            reward_id, reward_name, points_required, reward_desc = row
+            reward_dict = {
+                "reward_id": reward_id,
+                "reward_name": reward_name,
+                "points_required": points_required,
+                "reward_desc": reward_desc
+            }
+            # Add the created dictionary to the main dictionary using post_id as the key
+            rewards_dict[reward_id] = reward_dict
+        return rewards_dict
+
     def postsToDict(self, input: tuple[tuple, ...]):
         posts_dict = {}
         for row in input:
