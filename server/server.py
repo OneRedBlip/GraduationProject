@@ -46,5 +46,15 @@ def getPosts():
         return ("An error has occured", 500)
 
 
+@app.route("/rewards", methods=['POST', 'GET'])
+def getRewards():
+    try:
+        return db.getRewards()
+    except Exception as e:
+        print("Exception: ", e)
+        # TODO Return a better status code
+        return ("An error has occured", 500)
+
+
 db = database.Database("database.db")
 app.run(host="0.0.0.0", port=8000)
