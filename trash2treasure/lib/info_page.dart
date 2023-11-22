@@ -95,7 +95,7 @@ class InfoPage extends StatelessWidget {
                       SizedBox(height: 4),
                       Row(
                         children: [
-                          SvgPicture.asset(
+                          Image.asset(
                             'assets/instagram_icon.svg',
                             width: 20,
                             height: 20,
@@ -127,7 +127,7 @@ class InfoPage extends StatelessWidget {
     );
   }
 
-  Widget _buildRecycleCenterBox({String cityName, String imagePath}) {
+  Widget _buildRecycleCenterBox({required String cityName, required String imagePath}) {
     return Container(
       width: 120,
       height: 120,
@@ -136,7 +136,7 @@ class InfoPage extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          SvgPicture.asset(
+          Image.asset(
             imagePath,
             fit: BoxFit.cover,
           ),
