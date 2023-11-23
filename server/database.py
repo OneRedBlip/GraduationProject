@@ -5,6 +5,7 @@ class Database:
     def __init__(self, db_path: str) -> None:
         self.con: sqlite3.Connection = sqlite3.connect(db_path, check_same_thread=False)
         self.cur: sqlite3.Cursor = self.con.cursor()
+        self.cur.execute("PRAGMA foreign_keys = ON")
 
         # TODO: implement ON UPDATE statements for applicable tables
 
