@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:trash2treasure/rquests_page.dart';
 import 'package:trash2treasure/rewards_page.dart';
 import 'package:trash2treasure/guidelines_page.dart';
-import 'package:trash2treasure/info_page.dart';
+import 'package:trash2treasure/centers_page.dart' as CentersPageAlias;
 import 'package:trash2treasure/profile_page.dart';
 
 class AfterLogin extends StatefulWidget {
-  const AfterLogin({super.key});
+  const AfterLogin({Key? key}) : super(key: key);
 
   @override
   State<AfterLogin> createState() => _AfterLoginState();
@@ -16,7 +16,7 @@ class AfterLogin extends StatefulWidget {
 class _AfterLoginState extends State<AfterLogin> {
   int currentPage = 4;
   List pages = [
-    InfoPage(),
+    CentersPageAlias.InfoPage(),
     RewardsPage(),
     ProfilePage(),
     GuidelinesPage(),
@@ -36,8 +36,8 @@ class _AfterLoginState extends State<AfterLogin> {
         },
         destinations: [
           NavigationDestination(
-            icon: Icon(Icons.info),
-            label: 'About Us', // Change the label to 'About Us'
+            icon: Icon(Icons.location_on),
+            label: 'Centers',
           ),
           NavigationDestination(
             icon: Icon(Icons.star),
@@ -52,7 +52,7 @@ class _AfterLoginState extends State<AfterLogin> {
             label: 'Guidelines',
           ),
           NavigationDestination(
-            icon: Icon(Icons.shopping_cart), // Replace with the desired icon
+            icon: Icon(Icons.shopping_cart),
             label: 'Haraj',
           ),
         ],
