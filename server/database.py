@@ -78,6 +78,18 @@ class Database:
                 gained_amount INT NOT NULL
             ) ''')
 
+        self.cur.executescript('''
+                               CREATE TRIGGER IF NOT EXISTS check_points_and_redeem
+                               BEFORE INSERT ON rewards_users FOR EACH ROW
+                               WHEN CASE WHEN (SELECT points FROM users WHERE user_id = NEW.user_id) < (NEW.redeem_amount)
+                               THEN RAISE (ABORT, "Not enough points!") 
+                               ELSE TRUE
+                               END
+                               BEGIN
+                               UPDATE users SET points = points - NEW.redeem_amount WHERE user_id = NEW.user_id;
+                               END
+                               ''')
+
         self.con.commit()
 
     def insert(self, table_name: str, data: dict) -> None:
