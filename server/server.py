@@ -67,7 +67,7 @@ def redeemReward():
         if db.getUserInfo(id)['points'] < rewardInfo['points_required']:
             return ("Not enough points", 500)
         db.insert("rewards_users", {"user_id": id, "reward_id": reward_id, "redeem_date": int(
-            time.time), "redeemed_amount": rewardInfo["points_required"]})
+            time.time()), "redeem_amount": rewardInfo["points_required"]})
         return ("", 200)
     except Exception as e:
         print("Exception: ", e)

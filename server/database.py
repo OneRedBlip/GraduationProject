@@ -62,7 +62,7 @@ class Database:
             CREATE TABLE IF NOT EXISTS rewards_users (
                 reward_history_id INTEGER PRIMARY KEY AUTOINCREMENT,
                 user_id INTEGER REFERENCES users (user_id),
-                rewards_id INTEGER REFERENCES rewards (reward_id),
+                reward_id INTEGER REFERENCES rewards (reward_id),
                 redeem_date INT NOT NULL,
                 redeem_amount INT NOT NULL
             )
@@ -107,8 +107,8 @@ class Database:
                 query = '''INSERT INTO centers (center_name, material_type, location, hours, additional_info)
                            VALUES(:center_name, :material_type, :location, :hours, :additional_info)'''
             case "rewards_users":
-                query = '''INSERT INTO rewards_users (user_id, reward_id, redeem_date, redeemed_amount)
-                           VALUES(:user_id, :reward_id, :redeem_date, :redeemed_amount)'''
+                query = '''INSERT INTO rewards_users (user_id, reward_id, redeem_date, redeem_amount)
+                           VALUES(:user_id, :reward_id, :redeem_date, :redeem_amount)'''
             case "users_centers":
                 query = '''INSERT INTO users_center (user_id, center_id, gain_date, gained_amount)
                            VALUES(:user_id, :center_id, :gain_date, :gained_amount)'''
