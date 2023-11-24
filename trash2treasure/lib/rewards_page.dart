@@ -36,7 +36,7 @@ class _RewardsPageState extends State<RewardsPage> {
               reward_desc: value['reward_desc'],
               points_required: value['points_required'],
               onPressed: () {
-                print("pressed $key");
+              postReward(key, widget.myCooke);
               },
             ),
           );
@@ -122,3 +122,28 @@ Future<http.Response> getRewards(String cookie) async {
   }
 }
 
+Future<http.Response> postReward(String reward_id, String cookie) async {
+  Map<String, dynamic> requestBody = {'reward_id': reward_id};
+
+  try {
+    final response = await http.post(
+      Uri(
+        host: "127.1.1.1",
+        port: 8000,
+        scheme: "http",
+        path: "/redeemreward"
+      ),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'cookie': cookie,
+      },
+      body: jsonEncode(requestBody),
+    );
+
+    return response;
+  }
+  catch (error) {
+    //TODO Return something better
+    return http.Response('An error occured while attempting to connect to server', 500);
+  }
+}
