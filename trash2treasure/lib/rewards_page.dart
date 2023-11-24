@@ -3,6 +3,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class RewardsPage extends StatefulWidget {
+  final String myCooke;
+  const RewardsPage ({Key? key, required this.myCooke}) : super(key: key);
   @override
   State<RewardsPage> createState() => _RewardsPageState();
 }
@@ -14,11 +16,13 @@ class _RewardsPageState extends State<RewardsPage> {
   void initState() {
     super.initState();
     createRewardsCards();
+    widget.myCooke;
   }
 
   Future<void> createRewardsCards() async {
+    print("we here" + widget.myCooke);
     try {
-      final response = await getRewards();
+      final response = await getRewards(widget.myCooke);
 
       if (response.statusCode == 200) {
         Map<String, dynamic> data = jsonDecode(response.body);
@@ -99,12 +103,13 @@ class RewardCard extends StatelessWidget {
   }
 }
 
-Future<http.Response> getRewards() async {
+Future<http.Response> getRewards(String cookie) async {
   try {
     final response = await http.post(
       Uri(host: "127.1.1.1", port: 8000, scheme: "http", path: "/rewards"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
+        'cookie': cookie,
       },
     );
     print(response.body);

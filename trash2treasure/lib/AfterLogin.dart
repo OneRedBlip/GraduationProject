@@ -7,24 +7,32 @@ import 'package:trash2treasure/centers_page.dart' as CentersPageAlias;
 import 'package:trash2treasure/profile_page.dart';
 
 class AfterLogin extends StatefulWidget {
-  const AfterLogin({Key? key}) : super(key: key);
+  final String mycookie;
+  const AfterLogin({Key? key, required this.mycookie}) : super(key: key);
 
   @override
   State<AfterLogin> createState() => _AfterLoginState();
 }
 
 class _AfterLoginState extends State<AfterLogin> {
+  @override
+    void initState() {
+      super.initState();
+      this.widget.mycookie;
+    }
   int currentPage = 4;
-  List pages = [
+
+  @override
+  Widget build(BuildContext context) {
+   List pages = [
     CentersPageAlias.InfoPage(),
-    RewardsPage(),
+    RewardsPage(myCooke: widget.mycookie),
     ProfilePage(),
     GuidelinesPage(),
     RequestsPage()
   ];
 
-  @override
-  Widget build(BuildContext context) {
+ print(this.widget.mycookie);
     return Scaffold(
       body: pages[currentPage],
       bottomNavigationBar: NavigationBar(
@@ -60,3 +68,4 @@ class _AfterLoginState extends State<AfterLogin> {
     );
   }
 }
+

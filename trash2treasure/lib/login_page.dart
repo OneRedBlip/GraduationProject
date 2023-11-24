@@ -44,6 +44,8 @@ class _LoginPageState extends State<LoginPage> {
               String username = emailController.text;
               String password = passwordController.text;
               http.Response response = await postCreds(username, password);
+              String originalCookie = response.headers['set-cookie']?? '';
+              String rawCookie = originalCookie.substring(0, originalCookie.indexOf(";"));
               print(response.body);
 
               // TODO: store the response data somewhere
@@ -51,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                 // Navigate to MainPage if login is successful
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => AfterLogin()),
+                  MaterialPageRoute(builder: (context) => AfterLogin(mycookie: rawCookie,)),
                 );
               } else {
                 // Handle invalid login credentials

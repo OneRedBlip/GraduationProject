@@ -25,7 +25,7 @@ class TrashToTreasureApp extends StatelessWidget {
         '/signup': (context) => SignupPage(),
         '/requests': (context) => RequestsPage(),
         '/profile': (context) => ProfilePage(),
-        '/rewards': (context) => RewardsPage(),
+        '/rewards': (context) => RewardsPage(myCooke: '',),
       },
     );
   }
