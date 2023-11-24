@@ -57,16 +57,17 @@ def getRewards():
         return ("An error has occured", 500)
 
 
-@app.route("/redeemReward", methods=['POST', 'GET'])
+@app.route("/redeemreward", methods=['POST'])
 def redeemReward():
     try:
         data = request.get_json()
         id = session["user_id"]
-        rewardInfo: dict = db.getRewards()[data["reward_id"]]
+        reward_id = int(data["reward_id"])
+        rewardInfo: dict = db.getRewards()[reward_id]
         if db.getUserInfo(id)['points'] < rewardInfo['points_required']:
             return ("Not enough points", 500)
-        db.insert("rewards_users", {"user_id": id, "reward_id": data["reward_id"],
-                                    "redeem_date": int(time.time), "redeemed_amount": rewardInfo["points_required"]})
+        db.insert("rewards_users", {"user_id": id, "reward_id": reward_id, "redeem_date": int(
+            time.time), "redeemed_amount": rewardInfo["points_required"]})
         return ("", 200)
     except Exception as e:
         print("Exception: ", e)
