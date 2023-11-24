@@ -1,4 +1,5 @@
 from flask import Flask, request, session
+import time
 import database
 
 app = Flask(__name__)
@@ -50,6 +51,23 @@ def getPosts():
 def getRewards():
     try:
         return db.getRewards()
+    except Exception as e:
+        print("Exception: ", e)
+        # TODO Return a better status code
+        return ("An error has occured", 500)
+
+
+@app.route("/redeemReward", methods=['POST', 'GET'])
+def redeemReward():
+    try:
+        data = request.get_json()
+        id = session["user_id"]
+        rewardInfo: dict = db.getRewards()[data["reward_id"]]
+        if db.getUserInfo(id)['points'] < rewardInfo['points_required']:
+            return ("Not enough points", 500)
+        db.insert("rewards_users", {"user_id": id, "reward_id": data["reward_id"],
+                                    "redeem_date": int(time.time), "redeemed_amount": rewardInfo["points_required"]})
+        return ("", 200)
     except Exception as e:
         print("Exception: ", e)
         # TODO Return a better status code
