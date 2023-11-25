@@ -92,7 +92,7 @@ class Database:
 
         self.con.commit()
 
-    def insert(self, table_name: str, data: dict) -> None:
+    def insert(self, table_name: str, data: dict) -> int:
         match table_name:
             case "users":
                 query = '''INSERT INTO users ('user_name', email, phone_num, password, user_location)
@@ -118,13 +118,14 @@ class Database:
 
         self.cur.execute(query, data)
         self.con.commit()
+        return self.cur.lastrowid
 
     def getUserInfo(self, user_id: int, ) -> dict[str, str]:  # Return types incorrect 🤷.
         res = self.cur.execute(
-            "SELECT user_name, email, phone_num, points, user_location FROM users WHERE user_id = ?", (user_id,)).fetchone()
+            "SELECT user_name, email, phone_num, points, user_location, user_id FROM users WHERE user_id = ?", (user_id,)).fetchone()
         if res is None:
             return None
-        return {"user_name": res[0], "email": res[1], "phone_num": res[2], "points": res[3], "user_location": res[4]}
+        return {"user_name": res[0], "email": res[1], "phone_num": res[2], "points": res[3], "user_location": res[4], "user_id": res[5]}
 
     def getUserPass(self, user_name: str, ) -> tuple[int, str]:
         res = self.cur.execute(

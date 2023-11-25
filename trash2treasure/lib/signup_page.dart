@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'userData.dart';
+import 'AfterLogin.dart';
 
 class SignupPage extends StatelessWidget {
   final TextEditingController usernameController = TextEditingController();
@@ -65,6 +67,23 @@ class SignupPage extends StatelessWidget {
 
               http.Response response = await postSignup(
                   username, email, phoneNumber, city, password, passwordRepeat);
+              Map<String, dynamic> responseJson =
+                  jsonDecode(response.body.toString());
+              String originalCookie = response.headers['set-cookie'] ?? '';
+              String rawCookie =
+                  originalCookie.substring(0, originalCookie.indexOf(";"));
+              UserData currentUserInfo =
+                  UserData.fromJson(responseJson, rawCookie);
+              if (response.statusCode == 200) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AfterLogin(
+                      currentUser: currentUserInfo,
+                    ),
+                  ),
+                );
+              }
             },
             child: Text('Sign Up'),
           ),
@@ -74,8 +93,13 @@ class SignupPage extends StatelessWidget {
   }
 }
 
-Future<http.Response> postSignup(String userName, String email,
-    String phoneNumber, String city, String password, String passwordRepeat) async {
+Future<http.Response> postSignup(
+    String userName,
+    String email,
+    String phoneNumber,
+    String city,
+    String password,
+    String passwordRepeat) async {
   Map<String, dynamic> requestBody = {
     'user_name': userName,
     'email': email,
@@ -93,7 +117,6 @@ Future<http.Response> postSignup(String userName, String email,
       },
       body: jsonEncode(requestBody),
     );
-
     return response;
   } catch (error) {
     //TODO Return something better
