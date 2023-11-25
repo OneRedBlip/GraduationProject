@@ -10,8 +10,10 @@ app.secret_key = b"RandomByetesForSecurity"
 def signup():
     try:
         data = request.get_json()
-        db.insert("users", data)
-        return ("User created successfully", 201)
+        id: int = db.insert("users", data)
+        userInDB = db.getUserInfo(id)
+        session["user_id"] = userInDB["user_id"]
+        return userInDB
     except Exception as e:
         print("Exception: ", e)
         # TODO Return a better status code
