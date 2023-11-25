@@ -1,5 +1,3 @@
-
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -29,7 +27,6 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           TextField(
             controller: emailController,
-
             decoration: InputDecoration(
               labelText: 'Username',
             ),
@@ -47,42 +44,51 @@ class _LoginPageState extends State<LoginPage> {
               String username = emailController.text;
               String password = passwordController.text;
               http.Response response = await postCreds(username, password);
-              Map<String,dynamic> responseJson = jsonDecode(response.body);
-              String originalCookie = response.headers['set-cookie']?? ';';
-              String rawCookie = originalCookie.substring(0, originalCookie.indexOf(";"));
+              Map<String, dynamic>? responseJson;
+              if (response.statusCode == 200) {
+                responseJson = jsonDecode(response.body);
+              }
+              String originalCookie = response.headers['set-cookie'] ?? ';';
+              String rawCookie =
+                  originalCookie.substring(0, originalCookie.indexOf(";"));
 
-              UserData currentUserInfo = UserData.fromJson(responseJson, rawCookie);
+              UserData currentUserInfo =
+                  UserData.fromJson(responseJson, rawCookie);
 
-              if (( username == 'testuser' && password == '123') || response.statusCode == 200 ) {
+              if ((username == 'testuser' && password == '123') ||
+                  response.statusCode == 200) {
                 // Navigate to MainPage if login is successful
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => AfterLogin(currentUser: currentUserInfo,)),
+                  MaterialPageRoute(
+                      builder: (context) => AfterLogin(
+                            currentUser: currentUserInfo,
+                          )),
                 );
               } else {
                 // Handle invalid login credentials
                 showDialog(
                   context: context,
-                  builder: (context) =>
-                      AlertDialog(
-                        title: Text('Invalid Login'),
-                        content: Text('Please enter valid credentials.'),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text('OK'),
-                          ),
-                        ],
+                  builder: (context) => AlertDialog(
+                    title: Text('Invalid Login'),
+                    content: Text('Please enter valid credentials.'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text('OK'),
                       ),
+                    ],
+                  ),
                 );
               }
             },
           ),
           TextButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => SignupPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SignupPage()));
             },
             child: Text('Sign Up'),
           ),
@@ -99,16 +105,14 @@ class _LoginPageState extends State<LoginPage> {
 }
 
 Future<http.Response> postCreds(String userName, String passWord) async {
-  Map<String, dynamic> requestBody = {'user_name': userName, 'password': passWord};
+  Map<String, dynamic> requestBody = {
+    'user_name': userName,
+    'password': passWord
+  };
 
   try {
     final response = await http.post(
-      Uri(
-        host: "127.1.1.1",
-        port: 8000,
-        scheme: "http",
-        path: "/login"
-      ),
+      Uri(host: "127.1.1.1", port: 8000, scheme: "http", path: "/login"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -116,9 +120,9 @@ Future<http.Response> postCreds(String userName, String passWord) async {
     );
 
     return response;
-  }
-  catch (error) {
+  } catch (error) {
     //TODO Return something better
-    return http.Response('An error occured while attempting to connect to server', 500);
+    return http.Response(
+        'An error occured while attempting to connect to server', 500);
   }
 }
