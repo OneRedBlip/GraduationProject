@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:trash2treasure/login_page.dart';
-import 'package:trash2treasure/profile_page.dart';
-import 'package:trash2treasure/rquests_page.dart';
-import 'package:trash2treasure/rewards_page.dart';
-import 'package:trash2treasure/signup_page.dart';
 
 void main() {
   runApp(TrashToTreasureApp());
@@ -18,14 +14,8 @@ class TrashToTreasureApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
       routes: {
         '/': (context) => HomePage(),
-        '/login': (context) => LoginPage(),
-        '/signup': (context) => SignupPage(),
-        '/requests': (context) => RequestsPage(),
-        '/profile': (context) => ProfilePage(),
-        '/rewards': (context) => RewardsPage(myCooke: '',),
       },
     );
   }
@@ -49,7 +39,7 @@ class HomePage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/login');
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
               },
               child: const Text('Continue'),
             ),
