@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
               String username = emailController.text;
               String password = passwordController.text;
               http.Response response = await postCreds(username, password);
-              String originalCookie = response.headers['set-cookie']?? '';
+              String originalCookie = response.headers['set-cookie']?? ';';
               String rawCookie = originalCookie.substring(0, originalCookie.indexOf(";"));
               print(response.body);
 
