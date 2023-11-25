@@ -4,8 +4,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:trash2treasure/signup_page.dart';
 
 import 'AfterLogin.dart';
+import 'userData.dart';
+
 class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -44,16 +47,17 @@ class _LoginPageState extends State<LoginPage> {
               String username = emailController.text;
               String password = passwordController.text;
               http.Response response = await postCreds(username, password);
+              Map<String,dynamic> responseJson = jsonDecode(response.body);
               String originalCookie = response.headers['set-cookie']?? '';
               String rawCookie = originalCookie.substring(0, originalCookie.indexOf(";"));
-              print(response.body);
 
-              // TODO: store the response data somewhere
+              UserData currentUserInfo = UserData.fromJson(responseJson, rawCookie);
+
               if (( username == 'testuser' && password == '123') || response.statusCode == 200 ) {
                 // Navigate to MainPage if login is successful
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => AfterLogin(mycookie: rawCookie,)),
+                  MaterialPageRoute(builder: (context) => AfterLogin(currentUser: currentUserInfo,)),
                 );
               } else {
                 // Handle invalid login credentials
@@ -78,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           TextButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/signup');
+              Navigator.push(context, MaterialPageRoute(builder: (context) => SignupPage()));
             },
             child: Text('Sign Up'),
           ),

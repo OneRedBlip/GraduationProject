@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'userData.dart';
 
 class RewardsPage extends StatefulWidget {
-  final String myCooke;
-  const RewardsPage ({Key? key, required this.myCooke}) : super(key: key);
+  final UserData currentUser;
+  const RewardsPage ({Key? key, required this.currentUser}) : super(key: key);
   @override
   State<RewardsPage> createState() => _RewardsPageState();
 }
@@ -16,13 +17,12 @@ class _RewardsPageState extends State<RewardsPage> {
   void initState() {
     super.initState();
     createRewardsCards();
-    widget.myCooke;
+    widget.currentUser;
   }
 
   Future<void> createRewardsCards() async {
-    print("we here" + widget.myCooke);
     try {
-      final response = await getRewards(widget.myCooke);
+      final response = await getRewards(widget.currentUser.sessionCookie);
 
       if (response.statusCode == 200) {
         Map<String, dynamic> data = jsonDecode(response.body);
@@ -36,7 +36,7 @@ class _RewardsPageState extends State<RewardsPage> {
               reward_desc: value['reward_desc'],
               points_required: value['points_required'],
               onPressed: () {
-              postReward(key, widget.myCooke);
+              postReward(key, widget.currentUser.sessionCookie);
               },
             ),
           );
