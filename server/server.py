@@ -1,6 +1,7 @@
 from flask import Flask, request, session
 import time
 import database
+import bcrypt
 
 app = Flask(__name__)
 app.secret_key = b"RandomByetesForSecurity"
@@ -10,6 +11,7 @@ app.secret_key = b"RandomByetesForSecurity"
 def signup():
     try:
         data = request.get_json()
+        data["password"] = bcrypt.hashpw(data["password"].encode(), bcrypt.gensalt())
         id: int = db.insert("users", data)
         userInDB = db.getUserInfo(id)
         session["user_id"] = userInDB["user_id"]
@@ -25,7 +27,7 @@ def login():
     try:
         data = request.get_json()
         userInDB = db.getUserPass(data["user_name"])
-        if userInDB is not None and userInDB[1] == data["password"]:
+        if userInDB is not None and bcrypt.checkpw(data["password"].encode(), userInDB[1]):
             session["user_id"] = userInDB[0]
             return db.getUserInfo(userInDB[0])
         else:

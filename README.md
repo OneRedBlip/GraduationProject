@@ -8,7 +8,7 @@
 - [x] Server: send and recive data from app
 - [x] Server: Authenticate user
 - [x] Server: Register user
-- [ ] Server: hash and salt passwords in DB
+- [x] Server: hash and salt passwords in DB
 - [ ] Server: seed DB with data for demo
 - [ ] Server: implement material recognition model
 - [x] APP: allow login without connecting to server (for easier devolepment)
