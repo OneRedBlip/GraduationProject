@@ -12,6 +12,7 @@ class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
+
 void navigateToHelpSupportPage(BuildContext context) {
   Navigator.push(
     context,
@@ -27,90 +28,91 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+      appBar: AppBar(
         title: Text('Login'),
-    ),
-    body: Container(
-    margin: EdgeInsets.symmetric(horizontal: 100), // Add left and right margins
-    child: Column(
-    children: [
-    TextField(
-    controller: emailController,
-    decoration: InputDecoration(
-    labelText: 'Username',
-    ),
-    ),
-    TextField(
-    controller: passwordController,
-    obscureText: true, // Hide the password
-    decoration: InputDecoration(
-    labelText: 'Password',
-    ),
-    ),
-          ElevatedButton(
-            child: Text('Login'),
-            onPressed: () async {
-              // Check login credentials here
-              String username = emailController.text;
-              String password = passwordController.text;
-              http.Response response = await postCreds(username, password);
-              Map<String, dynamic>? responseJson;
-              if (response.statusCode == 200) {
-                responseJson = jsonDecode(response.body);
-              }
-              String originalCookie = response.headers['set-cookie'] ?? ';';
-              String rawCookie =
-                  originalCookie.substring(0, originalCookie.indexOf(";"));
-
-              UserData currentUserInfo =
-                  UserData.fromJson(responseJson, rawCookie);
-
-              if ((username == 'testuser' && password == '123') ||
-                  response.statusCode == 200) {
-                // Navigate to MainPage if login is successful
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => AfterLogin(
-                            currentUser: currentUserInfo,
-                          )),
-                );
-              } else {
-                // Handle invalid login credentials
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    title: Text('Invalid Login'),
-                    content: Text('Please enter valid credentials.'),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text('OK'),
-                      ),
-                    ],
-                  ),
-                );
-              }
-            },
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SignupPage()));
-            },
-            child: Text('Sign Up'),
-          ),
-          TextButton(
-            onPressed: () {
-              navigateToHelpSupportPage(context);
-            },
-            child: Text('Help/Support'),
-          ),
-        ],
       ),
-    ));
+      body: Container(
+        margin: EdgeInsets.symmetric(horizontal: 100),
+        child: Column(
+          children: [
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(
+                labelText: 'Username',
+              ),
+            ),
+            TextField(
+              controller: passwordController,
+              obscureText: true, // Hide the password
+              decoration: InputDecoration(
+                labelText: 'Password',
+              ),
+            ),
+            ElevatedButton(
+              child: Text('Login'),
+              onPressed: () async {
+                // Check login credentials here
+                String username = emailController.text;
+                String password = passwordController.text;
+                http.Response response = await postCreds(username, password);
+                Map<String, dynamic>? responseJson;
+                if (response.statusCode == 200) {
+                  responseJson = jsonDecode(response.body);
+                }
+                String originalCookie = response.headers['set-cookie'] ?? ';';
+                String rawCookie =
+                    originalCookie.substring(0, originalCookie.indexOf(";"));
+
+                UserData currentUserInfo =
+                    UserData.fromJson(responseJson, rawCookie);
+
+                if ((username == 'testuser' && password == '123') ||
+                    response.statusCode == 200) {
+                  // Navigate to MainPage if login is successful
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AfterLogin(
+                              currentUser: currentUserInfo,
+                            )),
+                  );
+                } else {
+                  // Handle invalid login credentials
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text('Invalid Login'),
+                      content: Text('Please enter valid credentials.'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text('OK'),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              },
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignupPage()));
+              },
+              child: Text('Sign Up'),
+            ),
+            TextButton(
+              onPressed: () {
+                navigateToHelpSupportPage(context);
+              },
+              child: Text('Help/Support'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
