@@ -5,11 +5,18 @@ import 'package:http/http.dart' as http;
 import 'package:trash2treasure/signup_page.dart';
 
 import 'AfterLogin.dart';
+import 'help_support_page.dart';
 import 'userData.dart';
 
 class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPageState();
+}
+void navigateToHelpSupportPage(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => HelpSupportPage()),
+  );
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -97,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           TextButton(
             onPressed: () {
-              // Help/Support logic goes here
+              navigateToHelpSupportPage(context);
             },
             child: Text('Help/Support'),
           ),
