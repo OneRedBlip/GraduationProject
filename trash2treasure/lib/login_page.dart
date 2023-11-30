@@ -20,23 +20,26 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+        appBar: AppBar(
         title: Text('Login'),
-      ),
-      body: Column(
-        children: [
-          TextField(
-            controller: emailController,
-            decoration: InputDecoration(
-              labelText: 'Username',
-            ),
-          ),
-          TextField(
-            controller: passwordController,
-            decoration: InputDecoration(
-              labelText: 'Password',
-            ),
-          ),
+    ),
+    body: Container(
+    margin: EdgeInsets.symmetric(horizontal: 100), // Add left and right margins
+    child: Column(
+    children: [
+    TextField(
+    controller: emailController,
+    decoration: InputDecoration(
+    labelText: 'Username',
+    ),
+    ),
+    TextField(
+    controller: passwordController,
+    obscureText: true, // Hide the password
+    decoration: InputDecoration(
+    labelText: 'Password',
+    ),
+    ),
           ElevatedButton(
             child: Text('Login'),
             onPressed: () async {
@@ -100,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ],
       ),
-    );
+    ));
   }
 }
 
