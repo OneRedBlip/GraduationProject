@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-
-
 class RequestsPage extends StatefulWidget {
   @override
   State<RequestsPage> createState() => _RequestsPageState();
@@ -29,6 +27,8 @@ class _RequestsPageState extends State<RequestsPage> {
         data.forEach((key, value) {
           tmpCards.add(
             RequestCard(
+              requestTime: DateTime.fromMillisecondsSinceEpoch(
+                  value['post_date'] * 1000),
               title: value['material_type'],
               description: value['additional_info'],
               onPressed: () {
@@ -63,15 +63,17 @@ class _RequestsPageState extends State<RequestsPage> {
   }
 }
 
-class RequestCard extends StatelessWidget {
+class RequestCard extends StatelessWidget implements Comparable {
   final String title;
   final String description;
+  final DateTime requestTime;
   final VoidCallback onPressed;
 
   RequestCard({
     required this.title,
     required this.description,
     required this.onPressed,
+    required this.requestTime,
   });
 
   @override
@@ -83,6 +85,11 @@ class RequestCard extends StatelessWidget {
         onTap: onPressed,
       ),
     );
+  }
+
+  @override
+  int compareTo(other) {
+    return title.compareTo(other.requestTime);
   }
 }
 
