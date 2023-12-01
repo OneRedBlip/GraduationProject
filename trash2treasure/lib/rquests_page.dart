@@ -53,8 +53,15 @@ class _RequestsPageState extends State<RequestsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Trash to Treasure'),
+        title: Text('Requests'),
         automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            onPressed: () => {print("filterbutton")},
+            icon: Icon(Icons.filter_list_rounded),
+            tooltip: "Filter requests",
+          )
+        ],
       ),
       body: ListView(
         padding: EdgeInsets.all(16),
