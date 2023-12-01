@@ -17,6 +17,7 @@ class TrashToTreasureApp extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
       },
+    debugShowCheckedModeBanner: false,
     );
   }
 }
