@@ -31,6 +31,7 @@ class _RequestsPageState extends State<RequestsPage> {
                   value['post_date'] * 1000),
               title: value['material_type'],
               description: value['additional_info'],
+              location: value['location'],
               onPressed: () {
                 print("pressed");
               },
@@ -76,12 +77,14 @@ class RequestCard extends StatelessWidget implements Comparable {
   final String description;
   final DateTime requestTime;
   final VoidCallback onPressed;
+  final String location;
 
   RequestCard({
     required this.title,
     required this.description,
     required this.onPressed,
     required this.requestTime,
+    required this.location,
   });
 
   @override
