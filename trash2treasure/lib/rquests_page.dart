@@ -37,6 +37,7 @@ class _RequestsPageState extends State<RequestsPage> {
             ),
           );
         });
+        tmpCards.sort((a, b) => b.compareTo(a));
         setState(() {
           cardsList = tmpCards;
         });
@@ -89,7 +90,7 @@ class RequestCard extends StatelessWidget implements Comparable {
 
   @override
   int compareTo(other) {
-    return title.compareTo(other.requestTime);
+    return requestTime.compareTo(other.requestTime);
   }
 }
 
