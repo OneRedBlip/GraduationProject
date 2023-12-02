@@ -30,7 +30,7 @@ class _AfterLoginState extends State<AfterLogin> {
     RewardsPage(currentUser: widget.currentUser),
     ProfilePage(),
     GuidelinesPage(),
-    RequestsPage()
+    RequestsPage(currentUser: widget.currentUser)
   ];
 
     return Scaffold(

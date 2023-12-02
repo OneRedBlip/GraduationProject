@@ -43,7 +43,7 @@ def getPosts():
     try:
         data = request.get_json()
         if data["searchBy"] == "location":
-            return db.getPostsInLocation(data["location"])
+            return db.getPostsInLocation(data["location"].lower())
         # TODO: implement other search criteria
     except Exception as e:
         print("Exception: ", e)

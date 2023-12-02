@@ -1,24 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'userData.dart';
 
 class RequestsPage extends StatefulWidget {
+  final UserData currentUser;
+
+  const RequestsPage({super.key, required this.currentUser});
   @override
   State<RequestsPage> createState() => _RequestsPageState();
 }
 
 class _RequestsPageState extends State<RequestsPage> {
   List<RequestCard> cardsList = [];
+  String filterLocaion = "";
 
   @override
   void initState() {
     super.initState();
-    createRequestCards();
+    this.widget.currentUser;
+    this.filterLocaion = this.widget.currentUser.location;
+    createRequestCards(widget.currentUser.location);
   }
 
-  Future<void> createRequestCards() async {
+  Future<void> createRequestCards(String location) async {
     try {
-      final response = await postPosts("jubail", "location");
+      final response = await postPosts(location, "location");
 
       if (response.statusCode == 200) {
         Map<String, dynamic> data = jsonDecode(response.body);
@@ -57,10 +64,32 @@ class _RequestsPageState extends State<RequestsPage> {
         title: Text('Requests'),
         automaticallyImplyLeading: false,
         actions: [
-          IconButton(
-            onPressed: () => {print("filterbutton")},
+          PopupMenuButton(
+            initialValue: filterLocaion,
             icon: Icon(Icons.filter_list_rounded),
             tooltip: "Filter requests",
+            onSelected: (choice) {
+              createRequestCards(choice);
+              setState(() {
+                filterLocaion = choice;
+              });
+            },
+            itemBuilder: (BuildContext context) {
+              return [
+                const PopupMenuItem(
+                  value: "Dammam",
+                  child: Text("Dammam"),
+                ),
+                const PopupMenuItem(
+                  value: "Jubail",
+                  child: Text("Jubail"),
+                ),
+                const PopupMenuItem(
+                  value: "Riyadh",
+                  child: Text("Riyadh"),
+                ),
+              ];
+            },
           )
         ],
       ),
