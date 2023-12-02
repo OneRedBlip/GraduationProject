@@ -17,21 +17,22 @@ class AfterLogin extends StatefulWidget {
 
 class _AfterLoginState extends State<AfterLogin> {
   @override
-    void initState() {
-      super.initState();
-      this.widget.currentUser;
-    }
-  int currentPage = 4;
+  void initState() {
+    super.initState();
+    this.widget.currentUser;
+  }
+
+  int currentPage = 3;
 
   @override
   Widget build(BuildContext context) {
-   List pages = [
-    CentersPageAlias.InfoPage(),
-    RewardsPage(currentUser: widget.currentUser),
-    ProfilePage(),
-    GuidelinesPage(),
-    RequestsPage(currentUser: widget.currentUser)
-  ];
+    List pages = [
+      CentersPageAlias.InfoPage(),
+      RewardsPage(currentUser: widget.currentUser),
+      GuidelinesPage(),
+      RequestsPage(currentUser: widget.currentUser),
+      ProfilePage(),
+    ];
 
     return Scaffold(
       body: pages[currentPage],
@@ -52,10 +53,6 @@ class _AfterLoginState extends State<AfterLogin> {
             label: 'Reward',
           ),
           NavigationDestination(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-          NavigationDestination(
             icon: Icon(Icons.book),
             label: 'Guidelines',
           ),
@@ -63,9 +60,12 @@ class _AfterLoginState extends State<AfterLogin> {
             icon: Icon(Icons.handshake),
             label: 'Requests',
           ),
+          NavigationDestination(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
         ],
       ),
     );
   }
 }
-
