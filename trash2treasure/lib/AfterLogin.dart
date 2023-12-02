@@ -60,8 +60,8 @@ class _AfterLoginState extends State<AfterLogin> {
             label: 'Guidelines',
           ),
           NavigationDestination(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Haraj',
+            icon: Icon(Icons.handshake),
+            label: 'Requests',
           ),
         ],
       ),
