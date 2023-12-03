@@ -176,3 +176,30 @@ Future<http.Response> postPosts(String location, String searchBy) async {
         200);
   }
 }
+
+Future<http.Response> postNewPost(String cookie, String location,
+    String materialType, String additionalInfo) async {
+  Map<String, dynamic> requestBody = {
+    'location': location,
+    'material_type': materialType,
+    'additional_info': additionalInfo,
+    'post_date': (DateTime.now().millisecondsSinceEpoch ~/ 1000)
+  };
+
+  try {
+    final response = await http.post(
+      Uri(host: "127.1.1.1", port: 8000, scheme: "http", path: "/newpost"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'cookie': cookie,
+      },
+      body: jsonEncode(requestBody),
+    );
+
+    return response;
+  } catch (error) {
+    //TODO Return something better
+    return http.Response(
+        'An error occured while attempting to connect to server', 500);
+  }
+}
