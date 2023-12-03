@@ -15,6 +15,7 @@ class _RequestsPageState extends State<RequestsPage> {
   List<RequestCard> cardsList = [];
   String filterLocaion = "";
   String? newPostMaterial;
+  String? newPostCity;
 
   @override
   void initState() {
@@ -71,32 +72,59 @@ class _RequestsPageState extends State<RequestsPage> {
               key: formKey,
               child: Column(
                 children: [
-                  DropdownButton<String>(
-                    hint: Text('Material'),
-                    value: newPostMaterial,
-                    items: [
-                      DropdownMenuItem(
-                        child: Text('Metal'),
-                        value: 'Metal',
+                  Row(
+                    children: [
+                      DropdownButton<String>(
+                        hint: Text('Material'),
+                        value: newPostMaterial,
+                        items: [
+                          DropdownMenuItem(
+                            child: Text('Metal'),
+                            value: 'Metal',
+                          ),
+                          DropdownMenuItem(
+                            child: Text('Plastic'),
+                            value: 'Plastic',
+                          ),
+                          DropdownMenuItem(
+                            child: Text('Food'),
+                            value: 'Food',
+                          ),
+                          DropdownMenuItem(
+                            child: Text('Other'),
+                            value: 'Other',
+                          ),
+                        ],
+                        onChanged: (value) {
+                          setState(() {
+                            newPostMaterial = value;
+                          });
+                        },
                       ),
-                      DropdownMenuItem(
-                        child: Text('Plastic'),
-                        value: 'Plastic',
-                      ),
-                      DropdownMenuItem(
-                        child: Text('Food'),
-                        value: 'Food',
-                      ),
-                      DropdownMenuItem(
-                        child: Text('Other'),
-                        value: 'Other',
+                      DropdownButton<String>(
+                        hint: Text('City'),
+                        value: newPostCity,
+                        items: [
+                          DropdownMenuItem(
+                            child: Text('Dammam'),
+                            value: 'Dammam',
+                          ),
+                          DropdownMenuItem(
+                            child: Text('Jubail'),
+                            value: 'Jubail',
+                          ),
+                          DropdownMenuItem(
+                            child: Text('Riyadh'),
+                            value: 'Riyadh'
+                          ),
+                        ],
+                        onChanged: (value) {
+                          setState(() {
+                            newPostCity = value;
+                          });
+                        },
                       ),
                     ],
-                    onChanged: (value) {
-                      setState(() {
-                        newPostMaterial = value;
-                      });
-                    },
                   ),
                   TextFormField(
                     decoration: InputDecoration(labelText: 'Field 1'),
