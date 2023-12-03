@@ -61,7 +61,7 @@ class _RequestsPageState extends State<RequestsPage> {
 
   Future<void> _showInputPopup() async {
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-    String FieldA = 'Field A';
+    String newRequestDetails = '';
     return showDialog<void>(
       context: context,
       builder: (context) {
@@ -114,9 +114,7 @@ class _RequestsPageState extends State<RequestsPage> {
                             value: 'Jubail',
                           ),
                           DropdownMenuItem(
-                            child: Text('Riyadh'),
-                            value: 'Riyadh'
-                          ),
+                              child: Text('Riyadh'), value: 'Riyadh'),
                         ],
                         onChanged: (value) {
                           setState(() {
@@ -127,18 +125,16 @@ class _RequestsPageState extends State<RequestsPage> {
                     ],
                   ),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Field 1'),
-                    onChanged: (value) => FieldA = value,
+                    maxLines: 4,
+                    decoration: InputDecoration(labelText: 'Request Details'),
+                    onChanged: (value) => newRequestDetails = value,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'please enter something';
+                        return 'please enter the request details.';
                       } else {
                         return null;
                       }
                     },
-                  ),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Field 2'),
                   ),
                 ],
               ),
@@ -146,7 +142,12 @@ class _RequestsPageState extends State<RequestsPage> {
             actions: <Widget>[
               TextButton(
                 onPressed: () => {
-                  if (formKey.currentState!.validate()) {print("we valid")}
+                  if (formKey.currentState!.validate())
+                    {
+                      postNewPost(widget.currentUser.sessionCookie, newPostCity,
+                          newPostMaterial, newRequestDetails),
+                      Navigator.pop(context)
+                    }
                 },
                 child: Text('Submit'),
               ),
@@ -282,8 +283,8 @@ Future<http.Response> postPosts(String location, String searchBy) async {
   }
 }
 
-Future<http.Response> postNewPost(String cookie, String location,
-    String materialType, String additionalInfo) async {
+Future<http.Response> postNewPost(String cookie, String? location,
+    String? materialType, String additionalInfo) async {
   Map<String, dynamic> requestBody = {
     'location': location,
     'material_type': materialType,

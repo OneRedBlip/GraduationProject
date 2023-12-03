@@ -20,6 +20,6 @@
 - [x] APP: implement sign up logic
 - [x] APP: implement log in logic
 - [ ] APP: implement centers page
-- [ ] APP: implement haraj post making logic
-- [ ] APP: implement search/filters in haraj page
+- [x] APP: implement haraj post making logic
+- [x] APP: implement search/filters in haraj page
 
