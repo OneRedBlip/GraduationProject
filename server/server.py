@@ -57,7 +57,7 @@ def newPost():
         data = request.get_json()
         id = session["user_id"]
         db.insert("posts", {"user_id": id, "material_type": data["material_type"], "post_date": int(
-            time.time()), "location": data["location"].lower(), "additional_info": data["additional_info", "status": "o"]})
+            time.time()), "location": data["location"].lower(), "additional_info": data["additional_info"], "status": "o"})
         return ("", 200)
     except Exception as e:
         print("Exception: ", e)
