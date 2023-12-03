@@ -183,7 +183,6 @@ Future<http.Response> postNewPost(String cookie, String location,
     'location': location,
     'material_type': materialType,
     'additional_info': additionalInfo,
-    'post_date': (DateTime.now().millisecondsSinceEpoch ~/ 1000)
   };
 
   try {
