@@ -14,6 +14,7 @@ class RequestsPage extends StatefulWidget {
 class _RequestsPageState extends State<RequestsPage> {
   List<RequestCard> cardsList = [];
   String filterLocaion = "";
+  String? newPostMaterial;
 
   @override
   void initState() {
@@ -58,33 +59,75 @@ class _RequestsPageState extends State<RequestsPage> {
   }
 
   Future<void> _showInputPopup() async {
-  return showDialog<void>(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('Enter Request Details'),
-        content: Column(
-          children: [
-            TextField(
-              decoration: InputDecoration(labelText: 'Field 1'),
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+    String FieldA = 'Field A';
+    return showDialog<void>(
+      context: context,
+      builder: (context) {
+        return StatefulBuilder(builder: (context, setState) {
+          return AlertDialog(
+            title: Text('Enter Request Details'),
+            content: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  DropdownButton<String>(
+                    hint: Text('Material'),
+                    value: newPostMaterial,
+                    items: [
+                      DropdownMenuItem(
+                        child: Text('Metal'),
+                        value: 'Metal',
+                      ),
+                      DropdownMenuItem(
+                        child: Text('Plastic'),
+                        value: 'Plastic',
+                      ),
+                      DropdownMenuItem(
+                        child: Text('Food'),
+                        value: 'Food',
+                      ),
+                      DropdownMenuItem(
+                        child: Text('Other'),
+                        value: 'Other',
+                      ),
+                    ],
+                    onChanged: (value) {
+                      setState(() {
+                        newPostMaterial = value;
+                      });
+                    },
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(labelText: 'Field 1'),
+                    onChanged: (value) => FieldA = value,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'please enter something';
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Field 2'),
+                  ),
+                ],
+              ),
             ),
-            TextField(
-              decoration: InputDecoration(labelText: 'Field 2'),
-            ),
-          ],
-        ),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: Text('Submit'),
-          ),
-        ],
-      );
-    },
-  );
-}
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => {
+                  if (formKey.currentState!.validate()) {print("we valid")}
+                },
+                child: Text('Submit'),
+              ),
+            ],
+          );
+        });
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
