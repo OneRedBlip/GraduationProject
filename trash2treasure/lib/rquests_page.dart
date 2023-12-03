@@ -57,6 +57,35 @@ class _RequestsPageState extends State<RequestsPage> {
     }
   }
 
+  Future<void> _showInputPopup() async {
+  return showDialog<void>(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Enter Request Details'),
+        content: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(labelText: 'Field 1'),
+            ),
+            TextField(
+              decoration: InputDecoration(labelText: 'Field 2'),
+            ),
+          ],
+        ),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('Submit'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,6 +125,11 @@ class _RequestsPageState extends State<RequestsPage> {
       body: ListView(
         padding: EdgeInsets.all(16),
         children: cardsList,
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _showInputPopup,
+        label: Text("Create Request"),
+        icon: Icon(Icons.add),
       ),
     );
   }
