@@ -27,15 +27,15 @@ class InfoPage extends StatelessWidget {
               children: [
                 _buildRecycleCenterBox(
                   cityName: 'Dammam',
-                  imagePath: 'assets/dammam_map.png',
+                  imagePath: 'image/dammam_map.png',
                 ),
                 _buildRecycleCenterBox(
                   cityName: 'Riyadh',
-                  imagePath: 'assets/riyadh_map.png',
+                  imagePath: 'image/riyadh_map.png',
                 ),
                 _buildRecycleCenterBox(
                   cityName: 'Jeddah',
-                  imagePath: 'assets/jeddah_map.png',
+                  imagePath: 'image/jeddah_map.png',
                 ),
               ],
             ),
