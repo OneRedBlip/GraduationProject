@@ -54,8 +54,8 @@ class GuidelinesPage extends StatelessWidget {
                 Column(
                   children: [
                     Icon(Icons
-                        .local_florist), // Icon for recyclable material (e.g., organic waste)
-                    Text('Organic Waste'), // Label for recyclable material
+                        .description), // Icon for recyclable material (e.g., organic waste)
+                    Text('Paper'), // Label for recyclable material
                   ],
                 ),
                 Column(
@@ -84,14 +84,14 @@ class GuidelinesPage extends StatelessWidget {
                 Column(
                   children: [
                     Icon(Icons
-                        .description), // Icon for non-recyclable material (e.g., paper)
-                    Text('Paper'), // Label for non-recyclable material
+                        .local_florist), // Icon for non-recyclable material (e.g., paper)
+                    Text('Organic Waste'), // Label for non-recyclable material
                   ],
                 ),
                 Column(
                   children: [
                     Icon(Icons
-                        .battery_unknown), // Icon for non-recyclable material (e.g., batteries)
+                        .battery_std), // Icon for non-recyclable material (e.g., batteries)
                     Text('Batteries'), // Label for non-recyclable material
                   ],
                 ),
