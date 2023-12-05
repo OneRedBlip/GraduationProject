@@ -53,7 +53,7 @@ class InfoPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
                             'Contact Us',
@@ -66,7 +66,7 @@ class InfoPage extends StatelessWidget {
                       ),
                       SizedBox(height: 8),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Icon(
                             Icons.email,
@@ -78,7 +78,7 @@ class InfoPage extends StatelessWidget {
                       ),
                       SizedBox(height: 4),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Icon(
                             Icons.photo,
@@ -90,7 +90,7 @@ class InfoPage extends StatelessWidget {
                       ),
                       SizedBox(height: 4),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Icon(
                             Icons.language,
