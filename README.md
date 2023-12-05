@@ -12,14 +12,14 @@
 - [ ] Server: seed DB with data for demo
 - [ ] Server: implement material recognition model
 - [x] APP: allow login without connecting to server (for easier devolepment)
-- [ ] APP: hide password input with ```***```
+- [x] APP: hide password input with ```***```
 - [ ] APP: populate guidelines page
-- [ ] APP: finalize design of UI 
+- [x] APP: finalize design of UI 
 - [x] APP: implement navigation from and to all pages
 - [x] APP: send and recive data from server
 - [x] APP: implement sign up logic
 - [x] APP: implement log in logic
-- [ ] APP: implement centers page
+- [x] APP: implement centers page
 - [x] APP: implement haraj post making logic
 - [x] APP: implement search/filters in haraj page
 
