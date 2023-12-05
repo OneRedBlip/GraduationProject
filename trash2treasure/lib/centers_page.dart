@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'userData.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CentersPage extends StatelessWidget {
   final UserData currentUser;
@@ -15,67 +16,79 @@ class CentersPage extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Recycle Centers in Saudi',
-              style: TextStyle(fontSize: 16),
+            CenterCard(
+              name: "Center one!",
+              points: 90,
+              material: "Plastic",
+              distance: 2.25,
+              onTap: () {
+                print("we Clicked");
+              },
             ),
-            SizedBox(height: 16),
-            Text(
-              'Recycling Centers:',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            CenterCard(
+              name: "Center two!",
+              points: 130,
+              material: "Metal",
+              distance: 4.12,
+              onTap: () {
+                print("we Clicked");
+              },
             ),
-            SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _buildRecycleCenterBox(
-                  cityName: 'Dammam',
-                  imagePath: 'image/dammam_map.png',
-                ),
-                _buildRecycleCenterBox(
-                  cityName: 'Riyadh',
-                  imagePath: 'image/riyadh_map.png',
-                ),
-                _buildRecycleCenterBox(
-                  cityName: 'Jeddah',
-                  imagePath: 'image/jeddah_map.png',
-                ),
-              ],
-            ),
+            CenterCard(
+              name: "Center Last!!!!",
+              points: 1234,
+              material: "Food",
+              distance: 14.125,
+              onTap: () {
+                openGoogleMaps(27.1421476, 49.4040448);
+              },
+            )
           ],
         ),
       ),
     );
   }
+}
 
-  Widget _buildRecycleCenterBox({required String cityName, required String imagePath}) {
-    return Container(
-      width: 120,
-      height: 120,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Stack(
-        children: [
-          Image.asset(
-            imagePath,
-            fit: BoxFit.cover,
-          ),
-          Container(
-            alignment: Alignment.center,
-            child: Text(
-              cityName,
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ],
-      ),
+class CenterCard extends StatelessWidget {
+  final String material;
+  final String name;
+  final double distance;
+  final int points;
+  final VoidCallback onTap;
+
+  const CenterCard(
+      {super.key,
+      required this.material,
+      required this.name,
+      required this.distance,
+      required this.points,
+      required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Text(material),
+      title: Text(name),
+      subtitle: Text('$points pts'),
+      trailing: Text('$distance Km'),
+      onTap: onTap,
     );
+  }
+}
+
+void openGoogleMaps(double latitude, double longitude) async {
+  try {
+    Uri googleMapsUri = Uri(
+        scheme: 'https',
+        host: 'google.com',
+        path: 'maps/search/?api=1&query=$latitude,$longitude');
+
+    if (await canLaunchUrl(googleMapsUri)) {
+      await launchUrl(googleMapsUri);
+    }
+  } catch (error) {
+    print(error);
   }
 }

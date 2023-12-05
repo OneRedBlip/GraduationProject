@@ -137,11 +137,11 @@ class Database:
             "SELECT  center_name, material_type, location, hours, additional_info FROM centers WHERE center_id = ?", (center_id,)).fetchone()
         return res
 
-    def getCentersInLocation(self, location: str, ) -> tuple[tuple, ...]:
+    def getCentersInLocation(self, location: str, ) -> dict[dict, ...]:
         res = self.cur.execute(
             "SELECT center_id, center_name, material_type, location, hours, additional_info FROM centers WHERE location = ?", (location,)).fetchall()
         # using fetchall is kinda wrong. but should be fine for this prototype.
-        return res
+        return self.centersToDict(res)
 
     def getPostsInLocation(self, location: str, ) -> dict[dict, ...]:
         res = self.cur.execute(
@@ -175,7 +175,7 @@ class Database:
                 "points_required": points_required,
                 "reward_desc": reward_desc
             }
-            # Add the created dictionary to the main dictionary using post_id as the key
+            # Add the created dictionary to the main dictionary using reward_id as the key
             rewards_dict[reward_id] = reward_dict
         return rewards_dict
 
@@ -194,4 +194,19 @@ class Database:
             # Add the created dictionary to the main dictionary using post_id as the key
             posts_dict[post_id] = post_dict
         return posts_dict
+
+    def centersToDict(self, input: tuple[tuple, ...]):
+        centers_dict = {}
+        for row in input:
+            center_id, center_name, material_type, location, hours, additional_info = row
+            center_dict = {
+                "center_name": center_name,
+                "material_type": material_type,
+                "location": location,
+                "hours": hours,
+                "additional_info": additional_info
+            }
+            # Add the created dictionary to the main dictionary using center_id as the key
+            centers_dict[center_id] = center_dict
+        return centers_dict
     # TODO: figure out what data we need to fetch

@@ -75,6 +75,17 @@ def getRewards():
         return ("An error has occured", 500)
 
 
+@app.route("/centers", methods=['POST', 'GET'])
+def getCenters():
+    try:
+        data = request.get_json()
+        return db.getCentersInLocation(data["location"])
+    except Exception as e:
+        print("Exception: ", e)
+        # TODO Return a better status code
+        return ("An error has occured", 500)
+
+
 @app.route("/redeemreward", methods=['POST'])
 def redeemReward():
     try:
