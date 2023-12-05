@@ -39,7 +39,7 @@ class GuidelinesPage extends StatelessWidget {
                 onPressed: () {}),
             const SizedBox(height: 24),
             const Text('Recyclable Materials',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -69,7 +69,7 @@ class GuidelinesPage extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             const Text('Non-Recyclable Materials',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
