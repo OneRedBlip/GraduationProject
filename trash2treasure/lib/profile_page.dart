@@ -74,7 +74,7 @@ class InfoPage extends StatelessWidget {
                             color: Colors.black,
                           ),
                           SizedBox(width: 8),
-                          Text('trash2treasure@gmail.com'),
+                          Text('support@trash2treasure.com'),
                         ],
                       ),
                       SizedBox(height: 4),
