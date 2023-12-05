@@ -180,7 +180,7 @@ class ProfilePage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Full Name: Abdulrahman Alkhalaf'),
-                        Text('Email: Abdul123@gmail.com.com'),
+                        Text('Email: Abdul123@example.com'),
                         Text('Phone Number: 0565433210'),
                         Text('City:Jubail'),
                       ],
