@@ -74,3 +74,30 @@ class CentersPage extends StatelessWidget {
     );
   }
 }
+
+class CenterCard extends StatelessWidget {
+  final String material;
+  final String name;
+  final double distance;
+  final int points;
+  final VoidCallback onTap;
+
+  const CenterCard(
+      {super.key,
+      required this.material,
+      required this.name,
+      required this.distance,
+      required this.points,
+      required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Text(material),
+      title: Text(name),
+      subtitle: Text('${points}pts'),
+      trailing: Text('${distance}Km'),
+      onTap: onTap,
+    );
+  }
+}
