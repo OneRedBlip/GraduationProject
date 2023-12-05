@@ -51,7 +51,7 @@ class CentersPage extends StatelessWidget {
   }
 }
 
-class CenterCard extends StatelessWidget {
+class CenterCard extends StatelessWidget implements Comparable {
   final String material;
   final String name;
   final double distance;
@@ -78,6 +78,11 @@ class CenterCard extends StatelessWidget {
         onTap: onTap,
       ),
     );
+  }
+
+  @override
+  int compareTo(other) {
+    return distance.compareTo(other.distance);
   }
 }
 
