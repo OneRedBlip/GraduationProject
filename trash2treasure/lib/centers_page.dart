@@ -12,40 +12,38 @@ class CentersPage extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Text(
-              'Recycle Centers in Saudi',
-              style: TextStyle(fontSize: 16),
+            CenterCard(
+              name: "Center one!",
+              points: 90,
+              material: "Plastic",
+              distance: 2.25,
+              onTap: () {
+                print("we Clicked");
+              },
             ),
-            SizedBox(height: 16),
-            Text(
-              'Recycling Centers:',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            CenterCard(
+              name: "Center two!",
+              points: 130,
+              material: "Metal",
+              distance: 4.12,
+              onTap: () {
+                print("we Clicked");
+              },
             ),
-            SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _buildRecycleCenterBox(
-                  cityName: 'Dammam',
-                  imagePath: 'assets/dammam_map.png',
-                ),
-                _buildRecycleCenterBox(
-                  cityName: 'Riyadh',
-                  imagePath: 'assets/riyadh_map.png',
-                ),
-                _buildRecycleCenterBox(
-                  cityName: 'Jeddah',
-                  imagePath: 'assets/jeddah_map.png',
-                ),
-              ],
-            ),
+            CenterCard(
+              name: "Center Last!!!!",
+              points: 1234,
+              material: "Food",
+              distance: 14.125,
+              onTap: () {
+                openGoogleMaps(27.1421476, 49.4040448);
+              },
+            )
           ],
         ),
       ),
     );
   }
-
-
 }
 
 class CenterCard extends StatelessWidget {
