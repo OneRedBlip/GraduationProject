@@ -76,68 +76,80 @@ class _RequestsPageState extends State<RequestsPage> {
                 child: Column(
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        DropdownButton<String>(
-                          hint: Text('Material'),
-                          value: newPostMaterial,
-                          items: [
-                            DropdownMenuItem(
-                              child: Text('Metal'),
-                              value: 'Metal',
-                            ),
-                            DropdownMenuItem(
-                              child: Text('Plastic'),
-                              value: 'Plastic',
-                            ),
-                            DropdownMenuItem(
-                              child: Text('Food'),
-                              value: 'Food',
-                            ),
-                            DropdownMenuItem(
-                              child: Text('Other'),
-                              value: 'Other',
-                            ),
-                          ],
-                          onChanged: (value) {
-                            setState(() {
-                              newPostMaterial = value;
-                            });
-                          },
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: DropdownButton<String>(
+                            hint: Text('Material'),
+                            value: newPostMaterial,
+                            items: [
+                              DropdownMenuItem(
+                                child: Text('Metal'),
+                                value: 'Metal',
+                              ),
+                              DropdownMenuItem(
+                                child: Text('Plastic'),
+                                value: 'Plastic',
+                              ),
+                              DropdownMenuItem(
+                                child: Text('Food'),
+                                value: 'Food',
+                              ),
+                              DropdownMenuItem(
+                                child: Text('Other'),
+                                value: 'Other',
+                              ),
+                            ],
+                            onChanged: (value) {
+                              setState(() {
+                                newPostMaterial = value;
+                              });
+                            },
+                          ),
                         ),
-                        DropdownButton<String>(
-                          hint: Text('City'),
-                          value: newPostCity,
-                          items: [
-                            DropdownMenuItem(
-                              child: Text('Dammam'),
-                              value: 'Dammam',
-                            ),
-                            DropdownMenuItem(
-                              child: Text('Jubail'),
-                              value: 'Jubail',
-                            ),
-                            DropdownMenuItem(
-                                child: Text('Riyadh'), value: 'Riyadh'),
-                          ],
-                          onChanged: (value) {
-                            setState(() {
-                              newPostCity = value;
-                            });
-                          },
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: DropdownButton<String>(
+                            hint: Text('City'),
+                            value: newPostCity,
+                            items: [
+                              DropdownMenuItem(
+                                child: Text('Dammam'),
+                                value: 'Dammam',
+                              ),
+                              DropdownMenuItem(
+                                child: Text('Jubail'),
+                                value: 'Jubail',
+                              ),
+                              DropdownMenuItem(
+                                  child: Text('Riyadh'), value: 'Riyadh'),
+                            ],
+                            onChanged: (value) {
+                              setState(() {
+                                newPostCity = value;
+                              });
+                            },
+                          ),
                         ),
                       ],
                     ),
-                    TextFormField(
-                      maxLines: 4,
-                      decoration: InputDecoration(labelText: 'Request Details'),
-                      onChanged: (value) => newRequestDetails = value,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'please enter the request details.';
-                        } else {
-                          return null;
-                        }
-                      },
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        maxLines: 4,
+                        decoration: InputDecoration(
+                          labelText: 'Request Details',
+                        ),
+                        onChanged: (value) => newRequestDetails = value,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'please enter the request details.';
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
                     ),
                   ],
                 ),
