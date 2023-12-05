@@ -7,7 +7,7 @@ class InfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Info'),
+        title: const Text('About Us'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
