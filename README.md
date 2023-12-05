@@ -13,7 +13,7 @@
 - [ ] Server: implement material recognition model
 - [x] APP: allow login without connecting to server (for easier devolepment)
 - [x] APP: hide password input with ```***```
-- [ ] APP: populate guidelines page
+- [x] APP: populate guidelines page
 - [x] APP: finalize design of UI 
 - [x] APP: implement navigation from and to all pages
 - [x] APP: send and recive data from server
