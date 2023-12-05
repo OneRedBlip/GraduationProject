@@ -7,11 +7,11 @@ class GuidelinesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Guidelines'),
+        title: const Text('Guidelines'),
       ),
       body: Column(
         children: [
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           GestureDetector(
             onTap: () {
               // Navigate to material identification page
@@ -20,15 +20,15 @@ class GuidelinesPage extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => MaterialIdentificationPage()),
               );
             },
-            child: Icon(
+            child: const Icon(
               Icons.photo_camera,
               size: 48,
             ),
           ),
-          SizedBox(height: 24),
-          Text('Recyclable Materials', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          SizedBox(height: 12),
-          Row(
+          const SizedBox(height: 24),
+          const Text('Recyclable Materials', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 12),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Column(
@@ -51,10 +51,10 @@ class GuidelinesPage extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 24),
-          Text('Non-Recyclable Materials', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          SizedBox(height: 12),
-          Row(
+          const SizedBox(height: 24),
+          const Text('Non-Recyclable Materials', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 12),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Column(
