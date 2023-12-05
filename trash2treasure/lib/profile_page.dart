@@ -7,46 +7,46 @@ class InfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Info'),
+        title: const Text('Info'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'The Green Saudi Vision 2030 is a plan by Saudi Arabia to achieve sustainable development. Recycling is a key component of this vision and is important for several reasons:',
               style: TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 16),
-            Text(
+            const SizedBox(height: 16),
+            const Text(
               'Conservation of resources: Recycling helps preserve natural resources like forests and minerals by reducing the need for raw material extraction.',
               style: TextStyle(fontSize: 14),
             ),
-            SizedBox(height: 8),
-            Text(
+            const SizedBox(height: 8),
+            const Text(
               'Energy savings: Recycling requires less energy compared to manufacturing from scratch, leading to reduced greenhouse gas emissions.',
               style: TextStyle(fontSize: 14),
             ),
-            SizedBox(height: 8),
-            Text(
+            const SizedBox(height: 8),
+            const Text(
               'Waste reduction: Recycling diverts waste from landfills, extending the lifespan of materials and reducing pollution.',
               style: TextStyle(fontSize: 14),
             ),
-            SizedBox(height: 8),
-            Text(
+            const SizedBox(height: 8),
+            const Text(
               'Environmental protection: Proper waste disposal through recycling minimizes soil and water contamination and reduces harm to wildlife.',
               style: TextStyle(fontSize: 14),
             ),
-            SizedBox(height: 8),
-            Text(
+            const SizedBox(height: 8),
+            const Text(
               'Economic benefits: Recycling creates jobs, stimulates economic growth, and promotes a circular economy.',
               style: TextStyle(fontSize: 14),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Container(
               alignment: Alignment.bottomRight,
-              child: Card(
+              child: const Card(
                 child: Padding(
                   padding: EdgeInsets.all(16.0),
                   child: Column(
@@ -121,14 +121,14 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        title: const Text('Profile'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            const Row(
               children: [
                 Icon(Icons.person), // Icon for user profile
                 SizedBox(width: 8),
@@ -138,7 +138,7 @@ class ProfilePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Container(
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey),
@@ -148,7 +148,7 @@ class ProfilePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -161,20 +161,20 @@ class ProfilePage extends StatelessWidget {
                               ),
                             );
                           },
-                          icon: Icon(Icons.info), // Information icon
+                          icon: const Icon(Icons.info), // Information icon
                           tooltip: 'Information',
                         ),
                         TextButton.icon(
                           onPressed: () {
                             // Edit profile action
                           },
-                          icon: Icon(Icons.edit), // Icon for edit action
-                          label: Text('Edit'),
+                          icon: const Icon(Icons.edit), // Icon for edit action
+                          label: const Text('Edit'),
                         ),
                       ],
                     ),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -197,7 +197,7 @@ class ProfilePage extends StatelessWidget {
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => LoginPage()));
                     },
-                    icon: Icon(Icons.logout),
+                    icon: const Icon(Icons.logout),
                     label: const Text('Logout'))
               ],
             )
