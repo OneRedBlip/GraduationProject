@@ -68,12 +68,15 @@ class CenterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Text(material),
-      title: Text(name),
-      subtitle: Text('$points pts'),
-      trailing: Text('$distance Km'),
-      onTap: onTap,
+    return Padding(
+      padding: const EdgeInsets.all(3.0),
+      child: ListTile(
+        leading: Text(material),
+        title: Text(name),
+        subtitle: Text('$points pts'),
+        trailing: Text('$distance Km'),
+        onTap: onTap,
+      ),
     );
   }
 }
