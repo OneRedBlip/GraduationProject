@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'userData.dart';
 
 class InfoPage extends StatelessWidget {
   @override
@@ -111,6 +112,10 @@ class InfoPage extends StatelessWidget {
 }
 
 class ProfilePage extends StatelessWidget {
+  final UserData currentUser;
+
+  const ProfilePage({super.key, required this.currentUser});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:trash2treasure/rquests_page.dart';
 import 'package:trash2treasure/rewards_page.dart';
 import 'package:trash2treasure/guidelines_page.dart';
-import 'package:trash2treasure/centers_page.dart' as CentersPageAlias;
+import 'package:trash2treasure/centers_page.dart';
 import 'package:trash2treasure/profile_page.dart';
 import 'userData.dart';
 
@@ -27,11 +27,11 @@ class _AfterLoginState extends State<AfterLogin> {
   @override
   Widget build(BuildContext context) {
     List pages = [
-      CentersPageAlias.InfoPage(),
+      CentersPage(currentUser: widget.currentUser),
       RewardsPage(currentUser: widget.currentUser),
       GuidelinesPage(),
       RequestsPage(currentUser: widget.currentUser),
-      ProfilePage(),
+      ProfilePage(currentUser: widget.currentUser),
     ];
 
     return Scaffold(

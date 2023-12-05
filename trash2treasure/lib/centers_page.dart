@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'userData.dart';
 
-class InfoPage extends StatelessWidget {
+class CentersPage extends StatelessWidget {
+  final UserData currentUser;
+
+  const CentersPage({super.key, required this.currentUser});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
