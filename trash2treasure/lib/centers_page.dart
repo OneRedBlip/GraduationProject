@@ -9,6 +9,36 @@ class CentersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var centersList = [
+      CenterCard(
+        name: "Center one!",
+        points: 90,
+        material: "Plastic",
+        distance: 2.25,
+        onTap: () {
+          print("we Clicked");
+        },
+      ),
+      CenterCard(
+        name: "Center two!",
+        points: 130,
+        material: "Metal",
+        distance: 1.12,
+        onTap: () {
+          print("we Clicked");
+        },
+      ),
+      CenterCard(
+        name: "Center Last!!!!",
+        points: 1234,
+        material: "Food",
+        distance: 14.125,
+        onTap: () {
+          openGoogleMaps(27.1421476, 49.4040448);
+        },
+      )
+    ];
+    centersList.sort();
     return Scaffold(
       appBar: AppBar(
         title: Text('Centers'),
@@ -16,35 +46,7 @@ class CentersPage extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
-          children: [
-            CenterCard(
-              name: "Center one!",
-              points: 90,
-              material: "Plastic",
-              distance: 2.25,
-              onTap: () {
-                print("we Clicked");
-              },
-            ),
-            CenterCard(
-              name: "Center two!",
-              points: 130,
-              material: "Metal",
-              distance: 4.12,
-              onTap: () {
-                print("we Clicked");
-              },
-            ),
-            CenterCard(
-              name: "Center Last!!!!",
-              points: 1234,
-              material: "Food",
-              distance: 14.125,
-              onTap: () {
-                openGoogleMaps(27.1421476, 49.4040448);
-              },
-            )
-          ],
+          children: centersList,
         ),
       ),
     );
