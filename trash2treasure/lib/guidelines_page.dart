@@ -12,17 +12,18 @@ class GuidelinesPage extends StatelessWidget {
       body: Column(
         children: [
           const SizedBox(height: 24),
-          GestureDetector(
-            onTap: () {
+          FilledButton.icon(
+            label: Text('Is this recyclable?'),
+            onPressed: () {
               // Navigate to material identification page
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MaterialIdentificationPage()),
+                MaterialPageRoute(
+                    builder: (context) => MaterialIdentificationPage()),
               );
             },
-            child: const Icon(
+            icon: const Icon(
               Icons.photo_camera,
-              size: 48,
             ),
           ),
           const SizedBox(height: 24),
