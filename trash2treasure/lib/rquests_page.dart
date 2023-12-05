@@ -60,6 +60,7 @@ class _RequestsPageState extends State<RequestsPage> {
   }
 
   Future<void> _showInputPopup() async {
+    final double screenHeight = MediaQuery.of(context).size.height;
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     String newRequestDetails = '';
     return showDialog<void>(
@@ -68,75 +69,78 @@ class _RequestsPageState extends State<RequestsPage> {
         return StatefulBuilder(builder: (context, setState) {
           return AlertDialog(
             title: Text('Enter Request Details'),
-            content: Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      DropdownButton<String>(
-                        hint: Text('Material'),
-                        value: newPostMaterial,
-                        items: [
-                          DropdownMenuItem(
-                            child: Text('Metal'),
-                            value: 'Metal',
-                          ),
-                          DropdownMenuItem(
-                            child: Text('Plastic'),
-                            value: 'Plastic',
-                          ),
-                          DropdownMenuItem(
-                            child: Text('Food'),
-                            value: 'Food',
-                          ),
-                          DropdownMenuItem(
-                            child: Text('Other'),
-                            value: 'Other',
-                          ),
-                        ],
-                        onChanged: (value) {
-                          setState(() {
-                            newPostMaterial = value;
-                          });
-                        },
-                      ),
-                      DropdownButton<String>(
-                        hint: Text('City'),
-                        value: newPostCity,
-                        items: [
-                          DropdownMenuItem(
-                            child: Text('Dammam'),
-                            value: 'Dammam',
-                          ),
-                          DropdownMenuItem(
-                            child: Text('Jubail'),
-                            value: 'Jubail',
-                          ),
-                          DropdownMenuItem(
-                              child: Text('Riyadh'), value: 'Riyadh'),
-                        ],
-                        onChanged: (value) {
-                          setState(() {
-                            newPostCity = value;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  TextFormField(
-                    maxLines: 4,
-                    decoration: InputDecoration(labelText: 'Request Details'),
-                    onChanged: (value) => newRequestDetails = value,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'please enter the request details.';
-                      } else {
-                        return null;
-                      }
-                    },
-                  ),
-                ],
+            content: Container(
+              height: screenHeight * 0.55,
+              child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        DropdownButton<String>(
+                          hint: Text('Material'),
+                          value: newPostMaterial,
+                          items: [
+                            DropdownMenuItem(
+                              child: Text('Metal'),
+                              value: 'Metal',
+                            ),
+                            DropdownMenuItem(
+                              child: Text('Plastic'),
+                              value: 'Plastic',
+                            ),
+                            DropdownMenuItem(
+                              child: Text('Food'),
+                              value: 'Food',
+                            ),
+                            DropdownMenuItem(
+                              child: Text('Other'),
+                              value: 'Other',
+                            ),
+                          ],
+                          onChanged: (value) {
+                            setState(() {
+                              newPostMaterial = value;
+                            });
+                          },
+                        ),
+                        DropdownButton<String>(
+                          hint: Text('City'),
+                          value: newPostCity,
+                          items: [
+                            DropdownMenuItem(
+                              child: Text('Dammam'),
+                              value: 'Dammam',
+                            ),
+                            DropdownMenuItem(
+                              child: Text('Jubail'),
+                              value: 'Jubail',
+                            ),
+                            DropdownMenuItem(
+                                child: Text('Riyadh'), value: 'Riyadh'),
+                          ],
+                          onChanged: (value) {
+                            setState(() {
+                              newPostCity = value;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                    TextFormField(
+                      maxLines: 4,
+                      decoration: InputDecoration(labelText: 'Request Details'),
+                      onChanged: (value) => newRequestDetails = value,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'please enter the request details.';
+                        } else {
+                          return null;
+                        }
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
             actions: <Widget>[
