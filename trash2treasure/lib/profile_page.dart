@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'userData.dart';
 import 'package:trash2treasure/login_page.dart';
+import 'package:flutter_svg/svg.dart';
 
 class InfoPage extends StatelessWidget {
   @override
@@ -46,7 +47,7 @@ class InfoPage extends StatelessWidget {
             const SizedBox(height: 16),
             Container(
               alignment: Alignment.bottomRight,
-              child: const Card(
+              child: Card(
                 child: Padding(
                   padding: EdgeInsets.all(16.0),
                   child: Column(
@@ -80,9 +81,10 @@ class InfoPage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Icon(
-                            Icons.photo,
-                            color: Colors.black,
+                          SizedBox(
+                            width: 24,
+                            height: 24,
+                            child: SvgPicture.asset('image/instagram_icon.svg'),
                           ),
                           SizedBox(width: 8),
                           Text('@trash2trasure'),
