@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'userData.dart';
+import 'package:trash2treasure/login_page.dart';
 
 class InfoPage extends StatelessWidget {
   @override
@@ -188,6 +189,18 @@ class ProfilePage extends StatelessWidget {
                 ],
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton.icon(
+                    onPressed: () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
+                    },
+                    icon: Icon(Icons.logout),
+                    label: const Text('Logout'))
+              ],
+            )
           ],
         ),
       ),
