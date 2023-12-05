@@ -5,7 +5,7 @@ import 'userData.dart';
 
 class RewardsPage extends StatefulWidget {
   final UserData currentUser;
-  const RewardsPage ({Key? key, required this.currentUser}) : super(key: key);
+  const RewardsPage({Key? key, required this.currentUser}) : super(key: key);
   @override
   State<RewardsPage> createState() => _RewardsPageState();
 }
@@ -36,7 +36,7 @@ class _RewardsPageState extends State<RewardsPage> {
               reward_desc: value['reward_desc'],
               points_required: value['points_required'],
               onPressed: () {
-              postReward(key, widget.currentUser.sessionCookie);
+                postReward(key, widget.currentUser.sessionCookie);
               },
             ),
           );
@@ -57,6 +57,17 @@ class _RewardsPageState extends State<RewardsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Rewards'),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 25, 0),
+            child: Center(
+              child: Text(
+                this.widget.currentUser.points.toString() + ' pts',
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
+          )
+        ],
       ),
       body: ListView(
         padding: EdgeInsets.all(16),
@@ -118,7 +129,9 @@ Future<http.Response> getRewards(String cookie) async {
     return response;
   } catch (error) {
     // for testing when not connected to server
-    return http.Response('{"1":{"points_required":550,"reward_desc":"Coupon Value: 100 SR","reward_id":1,"reward_name":"Tamimi"},"2":{"points_required":550,"reward_desc":"Coupon Value: 100 SR","reward_id":2,"reward_name":"Panda"},"3":{"points_required":550,"reward_desc":"Coupon Value: 100 SR","reward_id":3,"reward_name":"Lulu hypermarket"},"4":{"points_required":75,"reward_desc":"Coupon Value: 25 SR","reward_id":4,"reward_name":"HungerStation"}}', 200);
+    return http.Response(
+        '{"1":{"points_required":550,"reward_desc":"Coupon Value: 100 SR","reward_id":1,"reward_name":"Tamimi"},"2":{"points_required":550,"reward_desc":"Coupon Value: 100 SR","reward_id":2,"reward_name":"Panda"},"3":{"points_required":550,"reward_desc":"Coupon Value: 100 SR","reward_id":3,"reward_name":"Lulu hypermarket"},"4":{"points_required":75,"reward_desc":"Coupon Value: 25 SR","reward_id":4,"reward_name":"HungerStation"}}',
+        200);
   }
 }
 
@@ -127,12 +140,7 @@ Future<http.Response> postReward(String reward_id, String cookie) async {
 
   try {
     final response = await http.post(
-      Uri(
-        host: "127.1.1.1",
-        port: 8000,
-        scheme: "http",
-        path: "/redeemreward"
-      ),
+      Uri(host: "127.1.1.1", port: 8000, scheme: "http", path: "/redeemreward"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'cookie': cookie,
@@ -141,9 +149,9 @@ Future<http.Response> postReward(String reward_id, String cookie) async {
     );
 
     return response;
-  }
-  catch (error) {
+  } catch (error) {
     //TODO Return something better
-    return http.Response('An error occured while attempting to connect to server', 500);
+    return http.Response(
+        'An error occured while attempting to connect to server', 500);
   }
 }
