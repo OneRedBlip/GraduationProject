@@ -152,17 +152,17 @@ class ProfilePage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => InfoPage(),
-                              ),
-                            );
-                          },
-                          icon: const Icon(Icons.info), // Information icon
-                          tooltip: 'Information',
+                        const Padding(
+                          padding: EdgeInsets.only(left: 16, right: 16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Full Name: Abdulrahman Alkhalaf'),
+                              Text('Email: Abdul123@example.com'),
+                              Text('Phone Number: 0565433210'),
+                              Text('City:Jubail'),
+                            ],
+                          ),
                         ),
                         TextButton.icon(
                           onPressed: () {
@@ -174,31 +174,43 @@ class ProfilePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Full Name: Abdulrahman Alkhalaf'),
-                        Text('Email: Abdul123@example.com'),
-                        Text('Phone Number: 0565433210'),
-                        Text('City:Jubail'),
-                      ],
-                    ),
-                  ),
                 ],
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextButton.icon(
-                    onPressed: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => LoginPage()));
-                    },
-                    icon: const Icon(Icons.logout),
-                    label: const Text('Logout'))
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextButton.icon(
+                        label: const Text('About Us'),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => InfoPage(),
+                            ),
+                          );
+                        },
+                        icon: const Icon(Icons.info), // Information icon
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextButton.icon(
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginPage()));
+                          },
+                          icon: const Icon(Icons.logout),
+                          label: const Text('Logout')),
+                    )
+                  ],
+                ),
               ],
             )
           ],
