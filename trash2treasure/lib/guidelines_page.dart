@@ -13,7 +13,7 @@ class GuidelinesPage extends StatelessWidget {
         children: [
           const SizedBox(height: 24),
           FilledButton.icon(
-            label: Text('Is this recyclable?'),
+            label: Text('Is This Recyclable?'),
             onPressed: () {
               // Navigate to material identification page
               Navigator.push(
