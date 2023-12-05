@@ -74,3 +74,18 @@ class CenterCard extends StatelessWidget {
     );
   }
 }
+
+void openGoogleMaps(double latitude, double longitude) async {
+  try {
+    Uri googleMapsUri = Uri(
+        scheme: 'https',
+        host: 'google.com',
+        path: 'maps/search/?api=1&query=$latitude,$longitude');
+
+    if (await canLaunchUrl(googleMapsUri)) {
+      await launchUrl(googleMapsUri);
+    }
+  } catch (error) {
+    print(error);
+  }
+}
