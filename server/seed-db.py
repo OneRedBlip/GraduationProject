@@ -63,10 +63,6 @@ def addDemoUsers(users: tuple[dict, ...], db) -> None:
             continue
 
 
-db = database.Database("database.db")
-db.cur.execute("UPDATE users SET points = 1750 WHERE points = 0")
-db.con.commit()
-
 demo_posts = (
     {"user_id": 15, "post_date": 170198992, "material_type": "paper", "location": "riyadh",
         "additional_info": "Old newspapers for recycling.", "status": "o"},
@@ -109,6 +105,10 @@ def addDemoPosts(posts: tuple[dict, ...], db: database.Database) -> None:
     for post in posts:
         db.insert("posts", post)
 
+
+db = database.Database("database.db")
+db.cur.execute("UPDATE users SET points = 1750 WHERE points = 0")
+db.con.commit()
 
 db.cur.execute('''INSERT INTO "main"."rewards" ("reward_id", "reward_name", "points_required", "reward_desc") VALUES ('1', 'Tamimi', '350', 'Coupon Value: 100 SR')''')
 db.cur.execute('''INSERT INTO "main"."rewards" ("reward_id", "reward_name", "points_required", "reward_desc") VALUES ('2', 'Panda', '350', 'Coupon Value: 100 SR')''')
