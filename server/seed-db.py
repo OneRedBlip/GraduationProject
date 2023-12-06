@@ -58,7 +58,12 @@ def addDemoUsers(users: tuple[dict, ...], db) -> None:
     for user in users:
         try:
             user["password"] = bcrypt.hashpw("123".encode(), bcrypt.gensalt())
-            db.insert("users", user)
+            user["points"] = 1750
+            query = '''INSERT INTO users ('user_name', email, phone_num, password, user_location, points)
+                       VALUES(:user_name, :email, :phone_num, :password, :user_location, :points)'''
+            db.cur.execute(query, user)
+
+            # db.insert("users", user)
         except:
             continue
 
@@ -107,8 +112,6 @@ def addDemoPosts(posts: tuple[dict, ...], db: database.Database) -> None:
 
 
 db = database.Database("database.db")
-db.cur.execute("UPDATE users SET points = 1750 WHERE points = 0")
-db.con.commit()
 
 db.cur.execute('''INSERT INTO "main"."rewards" ("reward_id", "reward_name", "points_required", "reward_desc") VALUES ('1', 'Tamimi', '350', 'Coupon Value: 100 SR')''')
 db.cur.execute('''INSERT INTO "main"."rewards" ("reward_id", "reward_name", "points_required", "reward_desc") VALUES ('2', 'Panda', '350', 'Coupon Value: 100 SR')''')
