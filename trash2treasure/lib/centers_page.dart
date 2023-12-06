@@ -11,32 +11,86 @@ class CentersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var centersList = [
       CenterCard(
-        name: "Center one!",
-        points: 90,
-        material: "Plastic",
-        distance: 2.25,
+        name: "Clothes Bin",
+        points: 180,
+        material: "Fabric",
+        distance: 1.52,
         onTap: () {
           print("we Clicked");
         },
       ),
       CenterCard(
-        name: "Center two!",
-        points: 130,
-        material: "Metal",
+        name: "Paper Bin",
+        points: 80,
+        material: "Paper",
         distance: 1.12,
         onTap: () {
           print("we Clicked");
         },
       ),
       CenterCard(
-        name: "Center Last!!!!",
-        points: 1234,
-        material: "Food",
-        distance: 14.125,
+        name: "ResCo Plastics",
+        points: 220,
+        material: "Plastic",
+        distance: 3.12,
+        onTap: () {
+          print("we Clicked");
+        },
+      ),
+      CenterCard(
+        name: "EcoCycle",
+        points: 190,
+        material: "Iron",
+        distance: 4.03,
+        onTap: () {
+          print("we Clicked");
+        },
+      ),
+      CenterCard(
+        name: "Metal Marvels",
+        points: 100,
+        material: "Steel",
+        distance: 5.22,
+        onTap: () {
+          print("we Clicked");
+        },
+      ),
+      CenterCard(
+        name: "Green Glass",
+        points: 75,
+        material: "Glass",
+        distance: 3.02,
+        onTap: () {
+          print("we Clicked");
+        },
+      ),
+      CenterCard(
+        name: "Plastics Bin",
+        points: 40,
+        material: "Plastic",
+        distance: 20.82,
+        onTap: () {
+          print("we Clicked");
+        },
+      ),
+      CenterCard(
+        name: "Green Circuits",
+        points: 140,
+        material: "E-Waste",
+        distance: 26.33,
         onTap: () {
           openGoogleMaps(27.1421476, 49.4040448);
         },
-      )
+      ),
+      CenterCard(
+        name: "PaperPulse",
+        points: 70,
+        material: "Paper",
+        distance: 22.12,
+        onTap: () {
+          print("we Clicked");
+        },
+      ),
     ];
     centersList.sort();
     return Scaffold(
