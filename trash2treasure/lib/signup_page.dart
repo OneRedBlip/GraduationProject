@@ -47,12 +47,14 @@ class SignupPage extends StatelessWidget {
               ),
             ),
             TextField(
+              obscureText: true,
               controller: passwordController,
               decoration: InputDecoration(
                 labelText: 'Password',
               ),
             ),
             TextField(
+              obscureText: true,
               controller: passwordRepeatController,
               decoration: InputDecoration(
                 labelText: 'Repeat Password',
