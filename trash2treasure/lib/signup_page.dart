@@ -18,76 +18,79 @@ class SignupPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Sign Up'),
       ),
-      body: Column(
-        children: [
-          TextField(
-            controller: usernameController,
-            decoration: InputDecoration(
-              labelText: 'Username',
+      body: Padding(
+        padding: const EdgeInsets.all(26.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: usernameController,
+              decoration: InputDecoration(
+                labelText: 'Username',
+              ),
             ),
-          ),
-          TextField(
-            controller: emailController,
-            decoration: InputDecoration(
-              labelText: 'Email',
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(
+                labelText: 'Email',
+              ),
             ),
-          ),
-          TextField(
-            controller: phoneNumberController,
-            decoration: InputDecoration(
-              labelText: 'phone number',
+            TextField(
+              controller: phoneNumberController,
+              decoration: InputDecoration(
+                labelText: 'phone number',
+              ),
             ),
-          ),
-          TextField(
-            controller: cityController,
-            decoration: InputDecoration(
-              labelText: 'city',
+            TextField(
+              controller: cityController,
+              decoration: InputDecoration(
+                labelText: 'city',
+              ),
             ),
-          ),
-          TextField(
-            controller: passwordController,
-            decoration: InputDecoration(
-              labelText: 'Password',
+            TextField(
+              controller: passwordController,
+              decoration: InputDecoration(
+                labelText: 'Password',
+              ),
             ),
-          ),
-          TextField(
-            controller: passwordRepeatController,
-            decoration: InputDecoration(
-              labelText: 'Repeat Password',
+            TextField(
+              controller: passwordRepeatController,
+              decoration: InputDecoration(
+                labelText: 'Repeat Password',
+              ),
             ),
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              String username = usernameController.text;
-              String email = emailController.text;
-              String phoneNumber = phoneNumberController.text;
-              String city = cityController.text;
-              String password = passwordController.text;
-              String passwordRepeat = passwordRepeatController.text;
+            ElevatedButton(
+              onPressed: () async {
+                String username = usernameController.text;
+                String email = emailController.text;
+                String phoneNumber = phoneNumberController.text;
+                String city = cityController.text;
+                String password = passwordController.text;
+                String passwordRepeat = passwordRepeatController.text;
 
-              http.Response response = await postSignup(
-                  username, email, phoneNumber, city, password, passwordRepeat);
-              Map<String, dynamic> responseJson =
-                  jsonDecode(response.body.toString());
-              String originalCookie = response.headers['set-cookie'] ?? '';
-              String rawCookie =
-                  originalCookie.substring(0, originalCookie.indexOf(";"));
-              UserData currentUserInfo =
-                  UserData.fromJson(responseJson, rawCookie);
-              if (response.statusCode == 200) {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AfterLogin(
-                      currentUser: currentUserInfo,
+                http.Response response = await postSignup(
+                    username, email, phoneNumber, city, password, passwordRepeat);
+                Map<String, dynamic> responseJson =
+                    jsonDecode(response.body.toString());
+                String originalCookie = response.headers['set-cookie'] ?? '';
+                String rawCookie =
+                    originalCookie.substring(0, originalCookie.indexOf(";"));
+                UserData currentUserInfo =
+                    UserData.fromJson(responseJson, rawCookie);
+                if (response.statusCode == 200) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AfterLogin(
+                        currentUser: currentUserInfo,
+                      ),
                     ),
-                  ),
-                );
-              }
-            },
-            child: Text('Sign Up'),
-          ),
-        ],
+                  );
+                }
+              },
+              child: Text('Sign Up'),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -4,12 +4,12 @@
 - [x] Server: create DB
 - [x] Server: implement methods for updating DB
 - [x] Server: Fetch data from DB
-- [ ] Server: implement triggers for applicable tables in DB
+- [x] Server: implement triggers for applicable tables in DB
 - [x] Server: send and recive data from app
 - [x] Server: Authenticate user
 - [x] Server: Register user
 - [x] Server: hash and salt passwords in DB
-- [ ] Server: seed DB with data for demo
+- [x] Server: seed DB with data for demo
 - [ ] Server: implement material recognition model
 - [x] APP: allow login without connecting to server (for easier devolepment)
 - [x] APP: hide password input with ```***```
