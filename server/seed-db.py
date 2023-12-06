@@ -110,5 +110,10 @@ def addDemoPosts(posts: tuple[dict, ...], db: database.Database) -> None:
         db.insert("posts", post)
 
 
+db.cur.execute('''INSERT INTO "main"."rewards" ("reward_id", "reward_name", "points_required", "reward_desc") VALUES ('1', 'Tamimi', '350', 'Coupon Value: 100 SR')''')
+db.cur.execute('''INSERT INTO "main"."rewards" ("reward_id", "reward_name", "points_required", "reward_desc") VALUES ('2', 'Panda', '350', 'Coupon Value: 100 SR')''')
+db.cur.execute('''INSERT INTO "main"."rewards" ("reward_id", "reward_name", "points_required", "reward_desc") VALUES ('3', 'Lulu hypermarket', '350', 'Coupon Value: 100 SR')''')
+db.cur.execute('''INSERT INTO "main"."rewards" ("reward_id", "reward_name", "points_required", "reward_desc") VALUES ('4', 'HungerStation', '75', 'Coupon Value: 25 SR')''')
+db.con.commit()
 addDemoUsers(users_tuple, db)
 addDemoPosts(demo_posts, db)
