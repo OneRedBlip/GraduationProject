@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
         title: Text('Login'),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 100),
+        margin: EdgeInsets.all(26),
         child: Column(
           children: [
             TextField(

@@ -12,7 +12,7 @@ class TrashToTreasureApp extends StatelessWidget {
     return MaterialApp(
       title: 'Trash to Treasure',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       routes: {
         '/': (context) => HomePage(),
