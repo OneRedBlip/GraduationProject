@@ -99,7 +99,7 @@ class CentersPage extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
-        child: Column(
+        child: ListView(
           children: centersList,
         ),
       ),
