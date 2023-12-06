@@ -97,11 +97,9 @@ class CentersPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Centers'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: ListView(
-          children: centersList,
-        ),
+      body: ListView(
+      padding: EdgeInsets.all(16),
+        children: centersList,
       ),
     );
   }
@@ -127,7 +125,14 @@ class CenterCard extends StatelessWidget implements Comparable {
     return Padding(
       padding: const EdgeInsets.all(3.0),
       child: ListTile(
-        leading: Text(material),
+        leading: SizedBox(
+          child: Text(
+            material,
+            textAlign: TextAlign.start,
+          ),
+        width: 64,
+        ),
+        contentPadding: EdgeInsets.all(6),
         title: Text(name),
         subtitle: Text('$points pts'),
         trailing: Text('$distance Km'),
