@@ -41,28 +41,34 @@ class GuidelinesPage extends StatelessWidget {
             const Text('Recyclable Materials',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Column(
                   children: [
-                    Icon(Icons
-                        .local_drink), // Icon for recyclable material (e.g., plastic)
-                    Text('Plastic'), // Label for recyclable material
+                    Icon(
+                      Icons.local_drink,
+                    ), // Icon for recyclable material (e.g., plastic)
+                    TextButton(
+                      child: Text('Plastic'),
+                      onPressed: () {},
+                    ), // Label for recyclable material
                   ],
                 ),
                 Column(
                   children: [
                     Icon(Icons
                         .description), // Icon for recyclable material (e.g., organic waste)
-                    Text('Paper'), // Label for recyclable material
+                    TextButton(
+                        child: Text('Paper'),
+                        onPressed: () {}), // Label for recyclable material
                   ],
                 ),
                 Column(
                   children: [
                     Icon(Icons
                         .invert_colors), // Icon for recyclable material (e.g., glass)
-                    Text('Glass'), // Label for recyclable material
+                    TextButton( child: Text('Glass'), onPressed: (){}), // Label for recyclable material
                   ],
                 ),
               ],
@@ -71,28 +77,28 @@ class GuidelinesPage extends StatelessWidget {
             const Text('Non-Recyclable Materials',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Column(
                   children: [
                     Icon(Icons
                         .fastfood), // Icon for non-recyclable material (e.g., food)
-                    Text('Food'), // Label for non-recyclable material
+                    TextButton( child: Text('Food'), onPressed: (){}), // Label for non-recyclable material
                   ],
                 ),
                 Column(
                   children: [
                     Icon(Icons
                         .local_florist), // Icon for non-recyclable material (e.g., paper)
-                    Text('Organic Waste'), // Label for non-recyclable material
+                    TextButton( child: Text('Organic Waste'), onPressed: (){}), // Label for non-recyclable material
                   ],
                 ),
                 Column(
                   children: [
                     Icon(Icons
                         .battery_std), // Icon for non-recyclable material (e.g., batteries)
-                    Text('Batteries'), // Label for non-recyclable material
+                    TextButton( child: Text('Batteries'), onPressed: (){}), // Label for non-recyclable material
                   ],
                 ),
               ],
