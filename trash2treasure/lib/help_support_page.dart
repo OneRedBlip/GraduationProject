@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
 
 class HelpSupportPage extends StatefulWidget {
   @override
@@ -49,9 +51,10 @@ class _HelpSupportPageState extends State<HelpSupportPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Icon(
-                        Icons.photo,
-                        color: Colors.black,
+                      SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: SvgPicture.asset('image/instagram_icon.svg'),
                       ),
                       SizedBox(width: 8),
                       Text('@trash2trasure'),
@@ -78,3 +81,4 @@ class _HelpSupportPageState extends State<HelpSupportPage> {
     );
   }
 }
+
