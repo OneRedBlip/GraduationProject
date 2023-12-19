@@ -69,7 +69,7 @@ class _RequestsPageState extends State<RequestsPage> {
           return AlertDialog(
             title: Text('Enter Request Details'),
             content: Container(
-              height: screenHeight * 0.55,
+              height: screenHeight * 0.30,
               child: Form(
                 key: formKey,
                 child: Column(
