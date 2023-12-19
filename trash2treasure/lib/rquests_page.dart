@@ -42,7 +42,43 @@ class _RequestsPageState extends State<RequestsPage> {
               description: value['additional_info'],
               location: value['location'],
               onPressed: () {
-                print("pressed");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Scaffold(
+                      appBar: AppBar(
+                        title: Text('Request Details'),
+                      ),
+                      body: Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(50),
+                          child: ListView(
+                            children: [
+                              Text(
+                                'Material: ' + value['material_type'],
+                              ),
+                              Text(
+                                'Location: ' + value['location'],
+                              ),
+                              Text(
+                                'Description: ' + value['additional_info'],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 24, left: 46, right: 46),
+                                child: FilledButton.icon(
+                                  onPressed: () => {},
+                                  icon: const Icon(Icons.phone),
+                                  label: Text(value['phone_num'].toString()),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                );
               },
             ),
           );
