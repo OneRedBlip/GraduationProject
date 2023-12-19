@@ -159,6 +159,8 @@ class _RequestsPageState extends State<RequestsPage> {
                 onPressed: () => {
                   if (formKey.currentState!.validate())
                     {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text('Request Created successfully'))),
                       postNewPost(widget.currentUser.sessionCookie, newPostCity,
                           newPostMaterial, newRequestDetails),
                       Navigator.pop(context)

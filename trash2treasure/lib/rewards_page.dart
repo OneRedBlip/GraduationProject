@@ -40,6 +40,8 @@ class _RewardsPageState extends State<RewardsPage> {
                 widget.currentUser.setPoints(widget.currentUser.points -
                     value['points_required'] as int);
                 setState(() {});
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Reward redeemed successfully')));
               },
             ),
           );
