@@ -28,11 +28,11 @@ class GuidelinesPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            // Padding(
-            //   padding: const EdgeInsets.all(10.0),
-            //   child: const Text(
-            //       'Recyclability varies across different materials, playing a crucial role in sustainable waste management. Plastics, including PET and HDPE, are commonly recyclable, and proper disposal channels facilitate their reuse. Aluminum, known for its high recycling efficiency, is a sustainable choice due to its infinite recyclability without compromising quality. Glass is another recyclable material, with the potential to be reprocessed repeatedly. However, challenges arise with certain materials like food waste, which poses contamination issues in recycling streams. Batteries, comprising hazardous materials, should not be included in regular recycling bins, as their disposal requires specialized processes to prevent environmental harm. Understanding the recyclability of materials empowers individuals to make environmentally conscious choices in their daily lives.'),
-            // ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: const Text(
+                  'Recyclability varies across different materials, playing a crucial role in sustainable waste management. Plastics, including PET and HDPE, are commonly recyclable, and proper disposal channels facilitate their reuse. Aluminum, known for its high recycling efficiency, is a sustainable choice due to its infinite recyclability without compromising quality. Glass is another recyclable material, with the potential to be reprocessed repeatedly. However, challenges arise with certain materials like food waste, which poses contamination issues in recycling streams. Batteries, comprising hazardous materials, should not be included in regular recycling bins, as their disposal requires specialized processes to prevent environmental harm. Understanding the recyclability of materials empowers individuals to make environmentally conscious choices in their daily lives.'),
+            ),
             const SizedBox(height: 8),
             TextButton(
                 child: const Text('Click here for more information'),
@@ -68,7 +68,9 @@ class GuidelinesPage extends StatelessWidget {
                   children: [
                     Icon(Icons
                         .invert_colors), // Icon for recyclable material (e.g., glass)
-                    TextButton( child: Text('Glass'), onPressed: (){}), // Label for recyclable material
+                    TextButton(
+                        child: Text('Glass'),
+                        onPressed: () {}), // Label for recyclable material
                   ],
                 ),
               ],
@@ -84,21 +86,27 @@ class GuidelinesPage extends StatelessWidget {
                   children: [
                     Icon(Icons
                         .fastfood), // Icon for non-recyclable material (e.g., food)
-                    TextButton( child: Text('Food'), onPressed: (){}), // Label for non-recyclable material
+                    TextButton(
+                        child: Text('Food'),
+                        onPressed: () {}), // Label for non-recyclable material
                   ],
                 ),
                 Column(
                   children: [
                     Icon(Icons
                         .local_florist), // Icon for non-recyclable material (e.g., paper)
-                    TextButton( child: Text('Organic Waste'), onPressed: (){}), // Label for non-recyclable material
+                    TextButton(
+                        child: Text('Organic Waste'),
+                        onPressed: () {}), // Label for non-recyclable material
                   ],
                 ),
                 Column(
                   children: [
                     Icon(Icons
                         .battery_std), // Icon for non-recyclable material (e.g., batteries)
-                    TextButton( child: Text('Batteries'), onPressed: (){}), // Label for non-recyclable material
+                    TextButton(
+                        child: Text('Batteries'),
+                        onPressed: () {}), // Label for non-recyclable material
                   ],
                 ),
               ],
