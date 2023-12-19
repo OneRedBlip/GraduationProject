@@ -22,7 +22,7 @@ class _AfterLoginState extends State<AfterLogin> {
     this.widget.currentUser;
   }
 
-  int currentPage = 3;
+  int currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
