@@ -41,45 +41,8 @@ class _RequestsPageState extends State<RequestsPage> {
               title: value['material_type'],
               description: value['additional_info'],
               location: value['location'],
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Scaffold(
-                      appBar: AppBar(
-                        title: Text('Request Details'),
-                      ),
-                      body: Center(
-                        child: Padding(
-                          padding: EdgeInsets.all(50),
-                          child: ListView(
-                            children: [
-                              Text(
-                                'Material: ' + value['material_type'],
-                              ),
-                              Text(
-                                'Location: ' + value['location'],
-                              ),
-                              Text(
-                                'Description: ' + value['additional_info'],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 24, left: 46, right: 46),
-                                child: FilledButton.icon(
-                                  onPressed: () => {},
-                                  icon: const Icon(Icons.phone),
-                                  label: Text(value['phone_num'].toString()),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
+              phoneNum: value['phone_num'],
+              userName: value['user_name'],
             ),
           );
         });
@@ -263,15 +226,17 @@ class RequestCard extends StatelessWidget implements Comparable {
   final String title;
   final String description;
   final DateTime requestTime;
-  final VoidCallback onPressed;
   final String location;
+  final int phoneNum;
+  final String userName;
 
   RequestCard({
     required this.title,
     required this.description,
-    required this.onPressed,
     required this.requestTime,
     required this.location,
+    required this.phoneNum,
+    required this.userName,
   });
 
   @override
@@ -280,7 +245,45 @@ class RequestCard extends StatelessWidget implements Comparable {
       child: ListTile(
         title: Text(title),
         subtitle: Text(description),
-        onTap: onPressed,
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Scaffold(
+                appBar: AppBar(
+                  title: Text('Request Details'),
+                ),
+                body: Center(
+                  child: Padding(
+                    padding: EdgeInsets.all(50),
+                    child: ListView(
+                      children: [
+                        Text(
+                          'Material: $title',
+                        ),
+                        Text(
+                          'Location: $location',
+                        ),
+                        Text(
+                          'Description: $description',
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: 24, left: 46, right: 46),
+                          child: FilledButton.icon(
+                            onPressed: () => {},
+                            icon: const Icon(Icons.phone),
+                            label: Text(phoneNum.toString()),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
