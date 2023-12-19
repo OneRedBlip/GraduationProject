@@ -154,15 +154,15 @@ class ProfilePage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Padding(
+                        Padding(
                           padding: EdgeInsets.only(left: 16, right: 16),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Full Name: Abdulrahman Alkhalaf'),
-                              Text('Email: Abdul123@example.com'),
-                              Text('Phone Number: 0565433210'),
-                              Text('City:Jubail'),
+                              Text('User Name: ' + currentUser.userName),
+                              Text('Email: ' + currentUser.email),
+                              Text('Phone Number: ' + currentUser.phoneNumber),
+                              Text('City: ' + currentUser.location),
                             ],
                           ),
                         ),
