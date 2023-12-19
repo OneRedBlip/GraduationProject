@@ -19,10 +19,10 @@ class _HelpSupportPageState extends State<HelpSupportPage> {
             child: Padding(
               padding: EdgeInsets.all(16.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
                         'Contact Us',
@@ -35,7 +35,7 @@ class _HelpSupportPageState extends State<HelpSupportPage> {
                   ),
                   SizedBox(height: 8),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Icon(
                         Icons.email,
@@ -47,7 +47,7 @@ class _HelpSupportPageState extends State<HelpSupportPage> {
                   ),
                   SizedBox(height: 4),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Icon(
                         Icons.photo,
@@ -59,7 +59,7 @@ class _HelpSupportPageState extends State<HelpSupportPage> {
                   ),
                   SizedBox(height: 4),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Icon(
                         Icons.language,
