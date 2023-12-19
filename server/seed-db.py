@@ -47,7 +47,10 @@ for _ in range(99):
     demo_users.append({'user_name': generate_arab_username(), 'email': generate_arab_email(
     ), 'phone_num': generate_random_phone_number(), 'user_location': generate_saudi_city()})
 
-demo_users.append({'user_name': "demouser", 'email': "DemoEmailAddress@example.com",
+demo_users.append({'user_name': "demouser", 'email': "DemoEmail@example.com",
+                   'phone_num': generate_random_phone_number(), 'user_location': "jubail"})
+
+demo_users.append({'user_name': "otheruser", 'email': "another@example.com",
                    'phone_num': generate_random_phone_number(), 'user_location': "jubail"})
 
 # Convert the list to a tuple
