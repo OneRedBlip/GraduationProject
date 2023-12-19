@@ -98,7 +98,7 @@ class CentersPage extends StatelessWidget {
         title: Text('Centers'),
       ),
       body: ListView(
-      padding: EdgeInsets.all(16),
+        padding: EdgeInsets.all(16),
         children: centersList,
       ),
     );
@@ -130,13 +130,55 @@ class CenterCard extends StatelessWidget implements Comparable {
             material,
             textAlign: TextAlign.start,
           ),
-        width: 64,
+          width: 64,
         ),
-        contentPadding: EdgeInsets.all(6),
+        contentPadding: const EdgeInsets.all(6),
         title: Text(name),
         subtitle: Text('$points pts'),
         trailing: Text('$distance Km'),
-        onTap: onTap,
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Scaffold(
+                appBar: AppBar(
+                  title: const Text('Center Details'),
+                ),
+                body: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(50),
+                    child: ListView(
+                      children: [
+                        Text(
+                          'Center Name: $name',
+                        ),
+                        Text(
+                          'Material: $material',
+                        ),
+                        Text(
+                          'Points: $points',
+                        ),
+                        const Text(
+                          'Hours: Sun - Thu. 8 AM - 2 PM',
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: 24, left: 46, right: 46),
+                          child: FilledButton.icon(
+                            onPressed: () =>
+                                {openGoogleMaps(27.1421476, 49.4040448)},
+                            icon: const Icon(Icons.navigation),
+                            label: Text(distance.toString() + ' Km'),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
