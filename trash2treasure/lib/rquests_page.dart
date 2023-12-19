@@ -96,6 +96,14 @@ class _RequestsPageState extends State<RequestsPage> {
                                 value: 'Food',
                               ),
                               DropdownMenuItem(
+                                child: Text('Paper'),
+                                value: 'Paper',
+                              ),
+                              DropdownMenuItem(
+                                child: Text('Glass'),
+                                value: 'Glass',
+                              ),
+                              DropdownMenuItem(
                                 child: Text('Other'),
                                 value: 'Other',
                               ),
