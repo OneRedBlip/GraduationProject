@@ -37,6 +37,9 @@ class _RewardsPageState extends State<RewardsPage> {
               points_required: value['points_required'],
               onPressed: () {
                 postReward(key, widget.currentUser.sessionCookie);
+                widget.currentUser.setPoints(widget.currentUser.points -
+                    value['points_required'] as int);
+                setState(() {});
               },
             ),
           );
