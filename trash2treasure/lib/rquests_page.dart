@@ -251,13 +251,43 @@ class RequestCard extends StatelessWidget implements Comparable {
             MaterialPageRoute(
               builder: (context) => Scaffold(
                 appBar: AppBar(
-                  title: Text('Request Details'),
+                  title: const Text('Request Details'),
                 ),
                 body: Center(
                   child: Padding(
-                    padding: EdgeInsets.all(50),
+                    padding: const EdgeInsets.all(50),
                     child: ListView(
                       children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.person),
+                                  Text(
+                                    userName,
+                                    style: const TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.access_time),
+                                  Text(requestTime.year.toString() +
+                                      '-' +
+                                      requestTime.month.toString() +
+                                      '-' +
+                                      requestTime.day.toString())
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                         Text(
                           'Material: $title',
                         ),
@@ -269,7 +299,7 @@ class RequestCard extends StatelessWidget implements Comparable {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 24, left: 46, right: 46),
+                              top: 24, left: 42, right: 42),
                           child: FilledButton.icon(
                             onPressed: () => {},
                             icon: const Icon(Icons.phone),
