@@ -43,7 +43,13 @@ def getPosts():
     try:
         data = request.get_json()
         if data["searchBy"] == "location":
-            return db.getPostsInLocation(data["location"].lower())
+            posts = db.getPostsInLocation(data["location"].lower())
+            for post_id in posts:
+                user_info = db.getUserInfo(posts[post_id]["user_id"])
+                posts[post_id]["user_name"] = user_info["user_name"]
+                posts[post_id]["email"] = user_info["email"]
+                posts[post_id]["phone_num"] = user_info["phone_num"]
+            return posts
         # TODO: implement other search criteria
     except Exception as e:
         print("Exception: ", e)
